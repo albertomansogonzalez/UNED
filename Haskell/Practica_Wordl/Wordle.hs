@@ -16,15 +16,21 @@ letters = "abcdefghijklmnopqrstuvwxyz"
 
 -- recibe una cadena de caracteres y devuelve si todas las letras de la cadena estan en la lista de letras validas
 validLetters :: String -> Bool
+validLetters [] = True
+validLetters (x:xs) = (isValid x) && (validLetters xs)
+  where
+    isValid :: Char -> Bool
+    isValid c = elem c letters
+
 
 -- recibe la palabra intento, y la palabra secreta. Devuelve tipo Try: se marcan todas las letras de la palabra con las pistas
-newTry :: String -> String -> Try
+-- newTry :: String -> String -> Try
 
 -- devuelve Try con todas las letras posibles coom aun no utilizadas en ningun intento
-initialLS :: Try
+-- initialLS :: Try
 
 -- recibe lista actual de letras utilizadas (ya etiquetadas segun su uso en intentos anteriores), otr
 --   tipo Try conteniendo todas las letras de la palabra intento etiquetadas por "newTry"
 -- devuelve la lista de letras utilizadas actualizando las etiquetas segun el nuevo intento
-updateLS :: Try -> Try -> Try
+-- updateLS :: Try -> Try -> Try
 
