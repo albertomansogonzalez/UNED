@@ -24,7 +24,14 @@ validLetters (x:xs) = (isValid x) && (validLetters xs)
 
 
 -- recibe la palabra intento, y la palabra secreta. Devuelve tipo Try: se marcan todas las letras de la palabra con las pistas
--- newTry :: String -> String -> Try
+-- ej: newTry "camisa" "cierre" devuelve: [('c',C),('a',N),('m',N),('i',I),('s',N),('a',N)]
+newTry :: String -> String -> Try
+newTry [] _ = []
+newTry (x:xs) secreata@(y:ys) -- ir recorriendo la palabra intento
+                              -- Usamos "ys++[y]" para ir almacenando por detras de la palabra las letras que ya hemos recorrido, para buscar el toda la palabra secreta.
+  | x == y          = (x, C):newTry xs (ys++[y])  -- si coincide la letra -> Correcta
+  | elem x secreata = (x, I):newTry xs (ys++[y])  -- si no coincide, pero si se encuentra en la palabra secreta
+  | otherwise       = (x, N):newTry xs (ys++[y]) -- si no coincide, y tampoco se encuentra en la palabra secret
 
 -- devuelve Try con todas las letras posibles coom aun no utilizadas en ningun intento
 -- initialLS :: Try
