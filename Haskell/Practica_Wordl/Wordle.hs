@@ -34,7 +34,12 @@ newTry (x:xs) secreata@(y:ys) -- ir recorriendo la palabra intento
   | otherwise       = (x, N):newTry xs (ys++[y]) -- si no coincide, y tampoco se encuentra en la palabra secret
 
 -- devuelve Try con todas las letras posibles coom aun no utilizadas en ningun intento
--- initialLS :: Try
+initialLS :: Try
+initialLS = initialLSStep letters
+  where
+    initialLSStep [] = []
+    initialLSStep (x:xs) = (x, U):initialLSStep xs
+-- otra opcion seria: initialLS = map (\x -> (x, U)) letters
 
 -- recibe lista actual de letras utilizadas (ya etiquetadas segun su uso en intentos anteriores), otr
 --   tipo Try conteniendo todas las letras de la palabra intento etiquetadas por "newTry"
