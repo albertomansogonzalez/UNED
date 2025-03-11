@@ -30,8 +30,10 @@ validLetters (x:xs) = (isValid x) && (validLetters xs)
 -- Pasos del algoritmo:
 -- 1. Marcar las letras coincidentes. Funcion "coincidentes" que devuelve un tipo Try con las letras coincidentes marcadas 'C'
 -- 2. Eliminar las coincidentes de la palabra secreta. Funcion "elimin_coincident" que devuelve string quitando las letras correctas con '_'
--- 3. Juntando paso 1. y paso 2. aniadimos al Try del paso 1 las letras que no estan 'N' y las Incorrectas 'I'
---   3.1 Busca la letra de la palabra intento en la palabra secreta
+-- 3. Juntando paso 1. y paso 2. Con la Funcion "incorrectas", aniadimos al Try del paso 1 las letras que no estan 'N' y las Incorrectas 'I'
+--   Si la letra ya estaba marcada en el Try como correcta 'C', la mantiene como correcta y pasa a la siguiente letra
+--   Si no, busca la letra en la palabra. Si si esta, se marca como 'I' y se elimina la primera por la izquierda con la funcion "delete_first"
+--   si ni esta, se marca como 'N'
 
 newTry :: String -> String -> Try
 newTry intento secreta = incorrectas intento (elimin_coincident intento secreta) (coincidentes intento secreta)
@@ -51,11 +53,11 @@ newTry intento secreta = incorrectas intento (elimin_coincident intento secreta)
     incorrectas :: String -> String -> Try -> Try   -- Teniendo la palabra secreta sin coincidentes y el Try marcado con las coincidente
     incorrectas [] _ _ = []
     incorrectas (x:xs) ys (t:ts) -- busca la letra de la palabra intento en la palabra secreta
-      | elem x ys && (snd t /= C) = (x,I):incorrectas xs (delete_first x ys) ts   --como si esta, la tiene que eliminar
-      | snd t /= C = (x,N):incorrectas xs ys ts  -- si no esta
-      | otherwise = (x,C):incorrectas xs ys ts
+      | snd t == C     = (x,C):incorrectas xs ys ts     -- si ya estaba correcta, la deja correcta
+      | elem x ys      = (x,I):incorrectas xs (delete_first x ys) ts   -- como si esta en la palabra secreta, la tiene que eliminar
+      | otherwise      = (x,N):incorrectas xs ys ts  -- si no esta
         where
-          delete_first :: Char -> String  -> String
+          delete_first :: Char -> String  -> String    -- devuelve la palabra secreta quitando la primera letra encontrada
           delete_first _ [] = []
           delete_first a (x:xs)
             | a == x = ' ':xs
