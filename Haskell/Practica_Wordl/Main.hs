@@ -1,6 +1,15 @@
 module Main where
 -- Modulo principal con las funciones para interactuar con el usuario
 
+-- Implementacion en Haskell del juego del Wordle
+
+-- letras duplicadas:
+-- palabra clave: b r a g a
+--                r a p a r  : la primera 'r' debe ser amarilla, pero la segunda gris!!! (porque "ya no quendan mas")
+--                g a l g o  : la primera 'g' gris, la segunda 'g' verde
+
+
+
 import Ansi
 import Wordle
 import Data.Char

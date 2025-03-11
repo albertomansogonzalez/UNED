@@ -26,18 +26,41 @@ validLetters (x:xs) = (isValid x) && (validLetters xs)
 -- recibe la palabra intento, y la palabra secreta. Devuelve tipo Try: se marcan todas las letras de la palabra con las pistas
 -- ej: newTry "camisa" "cierre" devuelve: [('c',C),('a',N),('m',N),('i',I),('s',N),('a',N)]
 -- Cuidado letras repetidas; para nrewTry "aaab" "bbba" tiene que dar: [('a',I),('a',N),('a',N),('b',I)]
---newTry :: String -> String -> Try
---newTry [] _ = []
---newTry (x:xs) secreata@(y:ys) -- ir recorriendo la palabra intento
---                              -- Usamos "ys++[y]" para ir almacenando por detras de la palabra las letras que ya hemos recorrido, para buscar el toda la palabra secreta.
---  | x == y          = (x, C):newTry xs ys  -- si coincide la letra -> Correcta
---  | elem x secreata = (x, I):newTry xs ys  -- si no coincide, pero si se encuentra en la palabra secreta
---  | otherwise       = (x, N):newTry xs (ys++[y]) -- si no coincide, y tampoco se encuentra en la palabra secret
-
--- aprox 20, 21 lineas
+--
+-- Pasos del algoritmo:
+-- 1. Marcar las letras coincidentes. Funcion "coincidentes" que devuelve un tipo Try con las letras coincidentes marcadas 'C'
+-- 2. Eliminar las coincidentes de la palabra secreta. Funcion "elimin_coincident" que devuelve string quitando las letras correctas con '_'
+-- 3. Juntando paso 1. y paso 2. aniadimos al Try del paso 1 las letras que no estan 'N' y las Incorrectas 'I'
+--   3.1 Busca la letra de la palabra intento en la palabra secreta
 
 newTry :: String -> String -> Try
-newTry intento secreta = foo intento (elimin_coincient intento secreta) (coincidentes intento secreta)
+newTry intento secreta = incorrectas intento (elimin_coincident intento secreta) (coincidentes intento secreta)
+  where
+    coincidentes :: String -> String -> Try     -- Marca las letras coincidentes, devolviente un tipo Try
+    coincidentes [] [] = []
+    coincidentes (x:xs) (y:ys)
+     | x == y = (x, C):coincidentes xs ys
+     | otherwise = (x, U):coincidentes xs ys
+    
+    elimin_coincident :: String -> String -> String    -- Elimna las coincidentes por ' '
+    elimin_coincident [] [] = []
+    elimin_coincident (x:xs) (y:ys)
+      | x == y = ' ':elimin_coincident xs ys
+      | otherwise = y:elimin_coincident xs ys
+    
+    incorrectas :: String -> String -> Try -> Try   -- Teniendo la palabra secreta sin coincidentes y el Try marcado con las coincidente
+    incorrectas [] _ _ = []
+    incorrectas (x:xs) ys (t:ts) -- busca la letra de la palabra intento en la palabra secreta
+      | elem x ys && (snd t /= C) = (x,I):incorrectas xs (delete_first x ys) ts   --como si esta, la tiene que eliminar
+      | snd t /= C = (x,N):incorrectas xs ys ts  -- si no esta
+      | otherwise = (x,C):incorrectas xs ys ts
+        where
+          delete_first :: Char -> String  -> String
+          delete_first _ [] = []
+          delete_first a (x:xs)
+            | a == x = ' ':xs
+            | otherwise = x : delete_first a xs
+
 
 --Marcar las coincidentes, devolver tupla Try con las ‘C’, las otras poner a ‘U’
 --Eliminar las coincidentes de la secreta. (recibir Try del paso 1) (devolver String)
@@ -46,31 +69,12 @@ newTry intento secreta = foo intento (elimin_coincient intento secreta) (coincid
 --    Si se encuentra, eliminar letra de palabra secreta, y devolver I
 --    Si no se encuentra, devolver N
 
-coincidentes :: String -> String -> Try
-coincidentes [] [] = []
-coincidentes (x:xs) (y:ys)
-  | x == y = (x, C):coincidentes xs ys
-  | otherwise = (x, U):coincidentes xs ys
 
-elimin_coincient :: String -> String -> String
-elimin_coincient [] [] = []
-elimin_coincient (x:xs) (y:ys)
-  | x == y = ' ':elimin_coincient xs ys
-  | otherwise = y:elimin_coincient xs ys
 
--- intento, secreta sin coincidentes, try con coincidente, Devuelve try final
-foo :: String -> String -> Try -> Try
-foo [] _ _ = []
-foo (x:xs) ys (t:ts) -- busca la letra en la palabra
-  | elem x ys && (snd t /= C) = (x,I):foo xs (delete_first x ys) ts   --como si esta, la tiene que eliminar
-  | snd t /= C = (x,N):foo xs ys ts  -- si no esta
-  | otherwise = (x,C):foo xs ys ts
 
-delete_first :: Char -> String  -> String
-delete_first _ [] = []
-delete_first a (x:xs)
-  | a == x = ' ':xs
-  | otherwise = x : delete_first a xs
+
+
+
 
 
 
