@@ -64,25 +64,10 @@ newTry intento secreta = incorrectas intento (elimin_coincident intento secreta)
             | otherwise = x : delete_first a xs
 
 
---Marcar las coincidentes, devolver tupla Try con las ‘C’, las otras poner a ‘U’
---Eliminar las coincidentes de la secreta. (recibir Try del paso 1) (devolver String)
---Recorrer palabra intento. Primera letra, y sobre esta:
---Recorrer la palabra secreta.
---    Si se encuentra, eliminar letra de palabra secreta, y devolver I
---    Si no se encuentra, devolver N
 
 
 
-
-
-
-
-
-
-
-
-
--- devuelve Try con todas las letras posibles coom aun no utilizadas en ningun intento
+-- devuelve Try con todas las letras posibles como aun no utilizadas en ningun intento 'U'
 initialLS :: Try
 initialLS = initialLSStep letters
   where
@@ -94,6 +79,21 @@ initialLS = initialLSStep letters
 -- recibe lista actual de letras utilizadas (ya etiquetadas segun su uso en intentos anteriores), otro
 --   tipo Try conteniendo todas las letras de la palabra intento etiquetadas por "newTry"
 -- devuelve la lista de letras utilizadas actualizando las etiquetas segun el nuevo intento
+--      1. recorrer la pabra intento.
+--      2. por cada letra, setear en el tipo try, 
 updateLS :: Try -> Try -> Try
-updateLS a b = a -- TODO!!! lo pongo solo para que me compile
+-- updateLS a b = a -- TODO!!! lo pongo solo para que me compile
 
+
+-- recorremos cada letra de la palabra intento. (Usamos el parametro intento a modo de acumulador)
+updateLS intento ((i,j):xi) = updateLS (set i intento j) xi
+updateLS intento [] = intento -- si ya no quedan letras en la palabra intento, devolvemos el acumulador
+
+-- busca la letra, en un tipo Try que contiene todas las letras con las pistas
+--     y sustituye la pista en el caracter buscado.
+set :: Char -> Try -> Clue -> Try
+set letra ((l,m):xl) p
+  | letra /= l = (l,m):set letra xl p -- si no la encuentra, sigue buscando
+  -- si ya estamos en la posicion de la letra:
+  | p < m = (l,p):xl -- si la nueva pista es mas util, la modifica.(gracias a Deriving Ord)
+  | otherwise = (l,m):xl -- si ya tenia una pista mas util, la mantiene
