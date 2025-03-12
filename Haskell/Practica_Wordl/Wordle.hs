@@ -17,13 +17,13 @@ letters = "abcdefghijklmnopqrstuvwxyz"
 -- recibe una cadena de caracteres y devuelve si todas las letras de la cadena estan en la lista de letras validas
 validLetters :: String -> Bool
 validLetters [] = True
-validLetters (x:xs) = (isValid x) && (validLetters xs)
-  where
-    isValid :: Char -> Bool
-    isValid c = elem c letters
+validLetters (x:xs) = (elem x letters) && (validLetters xs)
+-- Otra opcion: validLetters cadena = all (\x -> elem x letters) cadena
 
 
--- recibe la palabra intento, y la palabra secreta. Devuelve tipo Try: se marcan todas las letras de la palabra con las pistas
+
+
+-- newTry: recibe la palabra intento, y la palabra secreta. Devuelve tipo Try: se marcan todas las letras de la palabra con las pistas
 -- ej: newTry "camisa" "cierre" devuelve: [('c',C),('a',N),('m',N),('i',I),('s',N),('a',N)]
 -- Cuidado letras repetidas; para nrewTry "aaab" "bbba" tiene que dar: [('a',I),('a',N),('a',N),('b',I)]
 --
@@ -67,7 +67,7 @@ newTry intento secreta = incorrectas intento (elimin_coincident intento secreta)
 
 
 
--- devuelve Try con todas las letras posibles como aun no utilizadas en ningun intento 'U'
+-- initialLS: devuelve Try con todas las letras posibles como aun no utilizadas en ningun intento 'U'
 initialLS :: Try
 initialLS = initialLSStep letters
   where
