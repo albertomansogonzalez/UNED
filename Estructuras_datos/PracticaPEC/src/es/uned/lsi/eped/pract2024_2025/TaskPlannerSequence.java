@@ -1,16 +1,23 @@
 package es.uned.lsi.eped.pract2024_2025;
 
 import es.uned.lsi.eped.DataStructures.IteratorIF;
+import es.uned.lsi.eped.DataStructures.QueueIF;
+import es.uned.lsi.eped.DataStructures.SequenceIF;
 
 public class TaskPlannerSequence implements TaskPlannerIF{
 
 	/* Declaración de atributos para almacenar la información del planificador de tareas */
-
+	
 	/* Estructura que almacena las tareas pasadas */
-	protected ... pastTasks;
+	protected QueueIF<TaskIF> pastTasks;	//Usamos Queue (Cola) porque solo queremos meter datos por el final
 	/* La estructura que almacena las tareas futuras debe ser una secuencia */
 	protected SequenceIF<TaskIF> futureTasks;
 
+	/* Constructor */
+	TaskPlannerSequence(){
+		
+	}
+	
 	/* Añade una nueva tarea
 	 * @param text: descripción de la tarea
 	 * @param date: fecha en la que la tarea debe completarse

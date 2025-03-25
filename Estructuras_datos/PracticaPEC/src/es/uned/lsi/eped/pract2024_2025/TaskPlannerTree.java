@@ -2,13 +2,14 @@ package es.uned.lsi.eped.pract2024_2025;
 
 
 import es.uned.lsi.eped.DataStructures.IteratorIF;
+import es.uned.lsi.eped.DataStructures.QueueIF;
 
 public class TaskPlannerTree implements TaskPlannerIF{
 
 	/* Declaración de atributos para almacenar la información del planificador de tareas */
 
 	/* Estructura que almacena las tareas pasadas */
-	protected ... pastTasks;
+	protected QueueIF<TaskIF> pastTasks;
 	/* La estructura que almacena las tareas futuras debe ser un BSTree */
 	protected BSTreeIF<TaskIF> futureTasks;
 
