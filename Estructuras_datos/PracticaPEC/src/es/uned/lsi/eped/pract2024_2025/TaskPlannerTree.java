@@ -3,6 +3,7 @@ package es.uned.lsi.eped.pract2024_2025;
 
 import es.uned.lsi.eped.DataStructures.IteratorIF;
 import es.uned.lsi.eped.DataStructures.QueueIF;
+import es.uned.lsi.eped.DataStructures.BSTreeIF;
 
 public class TaskPlannerTree implements TaskPlannerIF{
 
@@ -41,9 +42,13 @@ public class TaskPlannerTree implements TaskPlannerIF{
 	public void discard() {}
 
 	/* Devuelve un iterador de las tareas futuras */
-	public IteratorIF<TaskIF> iteratorFuture() {}
+	public IteratorIF<TaskIF> iteratorFuture() {
+		return futureTasks.iterator(futureTasks); //TODO
+	}
 
 	/* Devuelve un iterador del histórico de tareas pasadas */
-	public IteratorIF<TaskIF> iteratorPast() {}
+	public IteratorIF<TaskIF> iteratorPast() {
+		return pastTasks.iterator();	//TODO
+	}
 		
 }

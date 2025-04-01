@@ -2,53 +2,108 @@ package es.uned.lsi.eped.pract2024_2025;
 
 import es.uned.lsi.eped.DataStructures.IteratorIF;
 import es.uned.lsi.eped.DataStructures.QueueIF;
+import es.uned.lsi.eped.DataStructures.Queue;
 import es.uned.lsi.eped.DataStructures.SequenceIF;
+import es.uned.lsi.eped.DataStructures.List;
 
 public class TaskPlannerSequence implements TaskPlannerIF{
 
 	/* Declaración de atributos para almacenar la información del planificador de tareas */
 	
 	/* Estructura que almacena las tareas pasadas */
-	protected QueueIF<TaskIF> pastTasks;	//Usamos Queue (Cola) porque solo queremos meter datos por el final
+	protected QueueIF<TaskIF> pastTasks;	//histórico, usamos Queue (Cola) porque solo queremos meter datos por el final
 	/* La estructura que almacena las tareas futuras debe ser una secuencia */
 	protected SequenceIF<TaskIF> futureTasks;
 
 	/* Constructor */
 	TaskPlannerSequence(){
-		
+		pastTasks = new Queue<>();
+		futureTasks = new List<>();	//Instanciamos tipo Lista para poder insertar en cualquier posición
 	}
 	
 	/* Añade una nueva tarea
 	 * @param text: descripción de la tarea
 	 * @param date: fecha en la que la tarea debe completarse
 	 */
-	public void add(String text,int date) {}
+	public void add(String text,int date) {
+		
+		IteratorIF<TaskIF> it = futureTasks.iterator();
+		TaskIF nuevaTarea = new Task(false, text, date);
+		//usamos el iterador para buscar la posición en la que insertar
+		int pos = 1; //TODO 0/1
+		while(it.hasNext()) {
+			if (it.getNext().compareTo(nuevaTarea) == 1) {
+				((List<TaskIF>) futureTasks).insert(pos, nuevaTarea);
+				break;
+			}else {
+				pos++;
+			}
+		}
+		
+		
+	}
 
 	/* Elimina una tarea
 	 * @param date: fecha de la tarea que se debe eliminar
 	 */
-	public void delete(int date) {}
+	public void delete(int date) {
+		
+		// Se recorre la lista hasta encontrar la Tarea para eliminar
+		IteratorIF<TaskIF> it = futureTasks.iterator();
+		int pos = 1;
+		while(it.hasNext()) {
+			if (it.getNext().getDate() == date) {
+				((List<TaskIF>) futureTasks).remove(pos);
+				break;
+			}else {
+				pos++;
+			}
+		}
+
+	}
 
 	/* Reprograma una tarea
 	 * @param origDate: fecha actual de la tarea
 	 * @param newDate: nueva fecha de la tarea
 	 */
-	public void move(int origDate,int newDate) {}
+	public void move(int origDate,int newDate) {
+		//TODO
+	}
 
 	/* Ejecuta la próxima tarea:
 	 * la mete en el histórico marcándola como completada
 	 */
-	public void execute() {}
+	public void execute() {
+		//TODO
+		//eliminar primera tarea de futureTasks
+		//Añadir esta tarea en el historico pastTasks y marcarla como completada
+		TaskIF tarea = ((List<TaskIF>) futureTasks).get(1);	//obtiene el primer elemento
+		((List<TaskIF>) futureTasks).remove(1);//elimina el primer elemento
+		tarea.setCompleted(); //marcamos la tarea como completada
+		pastTasks.enqueue(tarea); //añade el elemento al histórico
+	}
 
 	/* Descarta la próxima tarea:
 	 * la mete en el histórico marcándola como no completada
 	 */
-	public void discard() {}
+	public void discard() {
+		//TODO
+		//eliminar primera tarea de futureTasks
+		//Añadir esta tarea en el historico pastTasks y marcarla como completada
+		TaskIF tarea = ((List<TaskIF>) futureTasks).get(1);	//obtiene el primer elemento
+		((List<TaskIF>) futureTasks).remove(1);//elimina el primer elemento
+		//tarea.setCompleted(); //NO marcamos la tarea como completada
+		pastTasks.enqueue(tarea); //añade el elemento al histórico
+	}
 
 	/* Devuelve un iterador de las tareas futuras */
-	public IteratorIF<TaskIF> iteratorFuture() {}
+	public IteratorIF<TaskIF> iteratorFuture() {
+		return futureTasks.iterator();
+	}
 
 	/* Devuelve un iterador del histórico de tareas pasadas */
-	public IteratorIF<TaskIF> iteratorPast() {}
+	public IteratorIF<TaskIF> iteratorPast() {
+		return pastTasks.iterator();
+	}
 		
 }
