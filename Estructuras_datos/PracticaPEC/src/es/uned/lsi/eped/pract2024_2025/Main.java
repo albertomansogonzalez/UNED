@@ -14,9 +14,10 @@ import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
 import es.uned.lsi.eped.DataStructures.IteratorIF;
+import es.uned.lsi.eped.DataStructures.ListIF;
+import es.uned.lsi.eped.DataStructures.List;
 
 public class Main {
-
 	private static final StringBuilder sb = new StringBuilder();
 	
 	private static void printUsage() {
@@ -89,6 +90,39 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws IOException {
+
+		// mis pruebas *******************************************
+		/*TaskPlannerIF taskPlanner2;
+		taskPlanner2 = new TaskPlannerSequence();
+		System.out.println("Mis pruebas");
+
+		taskPlanner2.add("TareaA", 2);
+		taskPlanner2.add("TareaB", 9);
+		taskPlanner2.add("TareaC", 5);
+		taskPlanner2.add("TareaD", 8);
+		taskPlanner2.add("TareaE", 7);
+		IteratorIF<TaskIF> it = taskPlanner2.iteratorFuture();
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+
+		it.reset();
+
+		taskPlanner2.delete(8);
+
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+		System.out.println(it.getNext().getText());
+
+
+
+		boolean flag = true;
+		if (flag) return;
+		*/
+		// fin mis pruebas *******************************************
 		
 		if ( args.length != 3 ) {
 			printUsage();
@@ -227,3 +261,5 @@ public class Main {
 		bw.close();
 	}
 }
+
+

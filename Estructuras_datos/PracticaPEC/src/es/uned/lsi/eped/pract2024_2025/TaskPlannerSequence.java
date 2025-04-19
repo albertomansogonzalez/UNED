@@ -5,6 +5,7 @@ import es.uned.lsi.eped.DataStructures.QueueIF;
 import es.uned.lsi.eped.DataStructures.Queue;
 import es.uned.lsi.eped.DataStructures.SequenceIF;
 import es.uned.lsi.eped.DataStructures.List;
+import es.uned.lsi.eped.DataStructures.ListIF;
 
 public class TaskPlannerSequence implements TaskPlannerIF{
 
@@ -20,25 +21,18 @@ public class TaskPlannerSequence implements TaskPlannerIF{
 		pastTasks = new Queue<>();
 		futureTasks = new List<>();	//Instanciamos tipo Lista para poder insertar en cualquier posición
 	}
-	
+
 	/* Añade una nueva tarea
 	 * @param text: descripción de la tarea
 	 * @param date: fecha en la que la tarea debe completarse
 	 */
 	public void add(String text,int date) {
 		
-		IteratorIF<TaskIF> it = futureTasks.iterator();
-		TaskIF nuevaTarea = new Task(false, text, date);
-		//usamos el iterador para buscar la posición en la que insertar
-		int pos = 1; //TODO 0/1
-		while(it.hasNext()) {
-			if (it.getNext().compareTo(nuevaTarea) == 1) {
-				((List<TaskIF>) futureTasks).insert(pos, nuevaTarea);
-				break;
-			}else {
-				pos++;
-			}
-		}
+		TaskIF nuevaTarea = new Task(false, text, date); //creamos nueva tarea para agregar
+		IteratorIF<TaskIF> it = futureTasks.iterator(); //Primero usamos el iterador para buscar la posición en la que insertar por orden ascendente. Luego insertamos
+		int pos = 1;
+		while(it.hasNext() && it.getNext().compareTo(nuevaTarea) <= 0) pos ++; 	//mientras que la fecha de la tarea sea mas pequeña (antes), se sigue avanzando
+		((List<TaskIF>) futureTasks).insert(pos, nuevaTarea);	//insertamos en posicion ordenada
 		
 		
 	}
