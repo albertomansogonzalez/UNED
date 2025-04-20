@@ -92,12 +92,13 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		// mis pruebas *******************************************
-		/*TaskPlannerIF taskPlanner2;
+		/*
+		TaskPlannerIF taskPlanner2;
 		taskPlanner2 = new TaskPlannerSequence();
 		System.out.println("Mis pruebas");
 
 		taskPlanner2.add("TareaA", 2);
-		taskPlanner2.add("TareaB", 9);
+		taskPlanner2.add("TareaB", 10);
 		taskPlanner2.add("TareaC", 5);
 		taskPlanner2.add("TareaD", 8);
 		taskPlanner2.add("TareaE", 7);
@@ -108,15 +109,18 @@ public class Main {
 		System.out.println(it.getNext().getText());
 		System.out.println(it.getNext().getText());
 
+		taskPlanner2.move(7, 9);
+
 		it.reset();
+		System.out.println("");
 
-		taskPlanner2.delete(8);
+
 
 		System.out.println(it.getNext().getText());
 		System.out.println(it.getNext().getText());
 		System.out.println(it.getNext().getText());
 		System.out.println(it.getNext().getText());
-
+		System.out.println(it.getNext().getText());
 
 
 		boolean flag = true;

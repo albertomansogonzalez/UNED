@@ -32,7 +32,7 @@ public class TaskPlannerSequence implements TaskPlannerIF{
 		IteratorIF<TaskIF> it = futureTasks.iterator(); //Primero usamos el iterador para buscar la posición en la que insertar por orden ascendente. Luego insertamos
 		int pos = 1;
 		while(it.hasNext() && it.getNext().compareTo(nuevaTarea) <= 0) pos ++; 	//mientras que la fecha de la tarea sea mas pequeña (antes), se sigue avanzando
-		((List<TaskIF>) futureTasks).insert(pos, nuevaTarea);	//insertamos en posicion ordenada
+		((ListIF<TaskIF>) futureTasks).insert(pos, nuevaTarea);	//insertamos en posicion ordenada
 		
 		
 	}
@@ -47,7 +47,7 @@ public class TaskPlannerSequence implements TaskPlannerIF{
 		int pos = 1;
 		while(it.hasNext()) {
 			if (it.getNext().getDate() == date) {
-				((List<TaskIF>) futureTasks).remove(pos);
+				((ListIF<TaskIF>) futureTasks).remove(pos);
 				break;
 			}else {
 				pos++;
@@ -61,17 +61,24 @@ public class TaskPlannerSequence implements TaskPlannerIF{
 	 * @param newDate: nueva fecha de la tarea
 	 */
 	public void move(int origDate,int newDate) {
-		//TODO
+		//primero buscar el elemento que queremos mover
+		IteratorIF<TaskIF> it = futureTasks.iterator(); //usamos el iterador para buscar el elemento
+		int pos = 1;
+		while(it.hasNext() && it.getNext().getDate() != origDate) pos ++; 	//mientras que la fecha no sea la de origen, sique buscando
+		System.out.println("pos: " + pos);
+		TaskIF tareaMovida = ((ListIF<TaskIF>) futureTasks).get(pos);
+		this.add(tareaMovida.getText(), newDate);	//creamos un nuevo elemento en la nueva posicion
+		this.delete(origDate);	//eliminamos el elemento de la posicion antigua
 	}
 
 	/* Ejecuta la próxima tarea:
 	 * la mete en el histórico marcándola como completada
 	 */
 	public void execute() {
-		//TODO
 		//eliminar primera tarea de futureTasks
 		//Añadir esta tarea en el historico pastTasks y marcarla como completada
-		TaskIF tarea = ((List<TaskIF>) futureTasks).get(1);	//obtiene el primer elemento
+		TaskIF tarea = ((ListIF<TaskIF>) futureTasks).get(1);	//obtiene el primer elemento
+			System.out.println("Primer elemento es:  " + tarea.getText());
 		((List<TaskIF>) futureTasks).remove(1);//elimina el primer elemento
 		tarea.setCompleted(); //marcamos la tarea como completada
 		pastTasks.enqueue(tarea); //añade el elemento al histórico
@@ -81,10 +88,9 @@ public class TaskPlannerSequence implements TaskPlannerIF{
 	 * la mete en el histórico marcándola como no completada
 	 */
 	public void discard() {
-		//TODO
 		//eliminar primera tarea de futureTasks
 		//Añadir esta tarea en el historico pastTasks y marcarla como completada
-		TaskIF tarea = ((List<TaskIF>) futureTasks).get(1);	//obtiene el primer elemento
+		TaskIF tarea = ((ListIF<TaskIF>) futureTasks).get(1);	//obtiene el primer elemento
 		((List<TaskIF>) futureTasks).remove(1);//elimina el primer elemento
 		//tarea.setCompleted(); //NO marcamos la tarea como completada
 		pastTasks.enqueue(tarea); //añade el elemento al histórico
