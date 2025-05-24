@@ -94,7 +94,8 @@ public class Main {
 		// mis pruebas *******************************************
 		/*
 		TaskPlannerIF taskPlanner2;
-		taskPlanner2 = new TaskPlannerSequence();
+		//taskPlanner2 = new TaskPlannerSequence();
+		taskPlanner2 = new TaskPlannerTree();
 		System.out.println("Mis pruebas");
 
 		taskPlanner2.add("TareaA", 2);
@@ -121,11 +122,11 @@ public class Main {
 		System.out.println(it.getNext().getText());
 		System.out.println(it.getNext().getText());
 		System.out.println(it.getNext().getText());
-
+		*/
 
 		boolean flag = true;
 		if (flag) return;
-		*/
+		
 		// fin mis pruebas *******************************************
 		
 		if ( args.length != 3 ) {
