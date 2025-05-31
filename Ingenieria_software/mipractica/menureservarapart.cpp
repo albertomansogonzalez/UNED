@@ -36,13 +36,9 @@ void MenuReservarApart::mostrar()
     Fecha entrada(diaEntrada, mesEntrada, anioEntrada);
     Fecha salida = Fecha::calcularFechaFinal(entrada, duracion);
 
-    //std::cout << "Fecha de salida: " << salida.getFecha() << std::endl;
-
     //¿Hay Disponibilidad?
-    int idApartaDispo = gesRAE.apartaDisponible(idEdificio, tipo, entrada, salida);
-    if (idApartaDispo > 0){
-
-        Reserva reserva = gesRAE.crearReserva(idEdificio, tipo, idApartaDispo, entrada, salida);
+    if (gesRAE.numApartaDisponible(idEdificio, tipo, entrada, salida) > 0){
+        Reserva reserva = gesRAE.reservar(false, idEdificio, tipo, entrada, salida);
         std::cout << std::endl << "\t\tDatos de la Reserva: " << std::endl << std::endl;
         std::cout << "\tNumero de Reserva: " << reserva.getNumReserva() << "/" << reserva.getFechaEntrada().getAnio() << std::endl;
         std::cout << "\tEdificio: " << reserva.getNombreEdificio() << "(ID = " << reserva.getIdEdificio() << ")" << std::endl;
@@ -54,7 +50,7 @@ void MenuReservarApart::mostrar()
         std::cout << "Es correcto la operacion (S/N)? ";
         std::cin >> confirmar;
         if (confirmar == 'S' || confirmar == 's'){
-            gesRAE.reservar(reserva);
+            gesRAE.reservar(true, idEdificio, tipo, entrada, salida);
         }else if (confirmar == 'N'){
             //No realizar la reserva
         }

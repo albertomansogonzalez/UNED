@@ -21,8 +21,15 @@ public:
     int getNNormales() const;
     int getNLujo() const;
     const std::vector<Apartamento>& getApartamentos();
-    int getApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida);
-    void reservar(Reserva reserva);
+    /**
+     * @brief numApartamentoDisponible
+     * @param tipo
+     * @param entrada
+     * @param salida
+     * @return Nº apartamentos disponibles
+     */
+    int numApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida);
+    Reserva reservar(bool confirmacion, Reserva reserva);
 private:
     int idEdificio;
     char nombre [20];

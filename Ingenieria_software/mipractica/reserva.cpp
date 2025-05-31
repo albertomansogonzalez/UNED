@@ -10,6 +10,7 @@ Reserva::Reserva(int numReserva,int idEdificio,const char* nombreEdificio, TipoA
     this->idEdificio = idEdificio;
     strcpy(this->nombreEdificio, nombreEdificio);
     this->tipo = tipo;
+    this->idApartamento = idApartaDispo;
     this->fechaEntrada = fechaEntrada;
     this->fechaSalida = fechaSalida;
     this->duracion = duracion;
@@ -41,6 +42,11 @@ void Reserva::setFechaSalida(const Fecha& fechaSalida)
 void Reserva::setIdEdificio(int id)
 {
     this->idEdificio = id;
+}
+
+void Reserva::setidApartamento(int id)
+{
+    this->idApartamento = id;
 }
 
 void Reserva::setNombreEdificio(const char *nombre)
@@ -81,6 +87,11 @@ const Fecha& Reserva::getFechaSalida() const
 int Reserva::getIdEdificio() const
 {
     return this->idEdificio;
+}
+
+int Reserva::getIdApartamento() const
+{
+    return this->idApartamento;
 }
 
 const TipoApartamento &Reserva::getTipo() const

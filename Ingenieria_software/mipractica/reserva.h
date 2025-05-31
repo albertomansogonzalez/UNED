@@ -15,6 +15,7 @@ public:
     void setFechaSalida(const Fecha& fechaSalida);
     void setDuracion(int duracion);
     void setIdEdificio(int id);
+    void setidApartamento(int id);
     void setNombreEdificio(const char *nombre);
     void setTipoApartamento(TipoApartamento tipo);
     int getNumReserva() const;
@@ -24,11 +25,13 @@ public:
     const Fecha& getFechaSalida() const;
     int getDuracion() const;
     int getIdEdificio() const;
+    int getIdApartamento() const;
     const TipoApartamento& getTipo() const;
 private:
     int numReserva;
     int idEdificio;
     char nombreEdificio [20];
+    int idApartamento;
     char refApartamento [8];
     TipoApartamento tipo;
     Fecha fechaEntrada;

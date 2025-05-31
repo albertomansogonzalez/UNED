@@ -86,24 +86,30 @@ const std::vector<Apartamento> &Edificio::getApartamentos()
     return this->apartamentos;
 }
 
-int Edificio::getApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida)
+int Edificio::numApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida)
 {
+    int num = 0;
     for (const Apartamento& apartamento: apartamentos){
         if (apartamento.getTipo() == tipo && apartamento.disponible(entrada, salida)){
-            return apartamento.getIdApartamento();
+            num++;
+            //return apartamento.getIdApartamento();
         }
     }
-    return -1;
+    return num;
 }
 
-void Edificio::reservar(Reserva reserva)
+Reserva Edificio::reservar(bool confirmacion, Reserva reserva)
 {
+    //se reserva el primer apartamento que se encuentre disponible
     for (Apartamento& apartamento: apartamentos){
         if (apartamento.getTipo() == reserva.getTipo() && apartamento.disponible(reserva.getFechaEntrada(), reserva.getFechaSalida())){
-            apartamento.addReserva(reserva);
-            //TODO exit??
+            reserva.setidApartamento(apartamento.getIdApartamento());
+            if (confirmacion) apartamento.addReserva(reserva);
+            return reserva;
         }
     }
+
+    //TODO, que pasa si no hay reserva disponible?
 }
 
 
