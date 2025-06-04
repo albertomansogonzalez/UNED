@@ -34,7 +34,7 @@ void MenuReservarApart::mostrar()
     std::cin >> duracion;
 
     Fecha entrada(diaEntrada, mesEntrada, anioEntrada);
-    Fecha salida = Fecha::calcularFechaFinal(entrada, duracion);
+    Fecha salida = entrada.calcularFechaFinal(duracion);
 
     //¿Hay Disponibilidad?
     if (gesRAE.numApartaDisponible(idEdificio, tipo, entrada, salida) > 0){
@@ -42,10 +42,10 @@ void MenuReservarApart::mostrar()
         std::cout << std::endl << "\t\tDatos de la Reserva: " << std::endl << std::endl;
         std::cout << "\tNumero de Reserva: " << reserva.getNumReserva() << "/" << reserva.getFechaEntrada().getAnio() << std::endl;
         std::cout << "\tEdificio: " << reserva.getNombreEdificio() << "(ID = " << reserva.getIdEdificio() << ")" << std::endl;
-        std::cout << "\tReferencia Apartamento: " << reserva.getRefApartamento() << std::endl;
-        std::cout << "\tFecha entrada: " << reserva.getFechaEntrada().getFecha() << std::endl;
-        std::cout << "\tDuracion estancia: " << duracion << " dias" << std::endl;
-        std::cout << "\tFecha salida: " << reserva.getFechaSalida().getFecha() << std::endl;
+        std::cout << "\tReferencia Apartamento: " << reserva.getRefApartamento().getTexto() << std::endl;
+        std::cout << "\tFecha entrada: " << reserva.getFechaEntrada().toString() << std::endl;
+        std::cout << "\tDuracion estancia: " << reserva.getDuracion() << " dias" << std::endl;
+        std::cout << "\tFecha salida: " << reserva.getFechaSalida().toString() << std::endl;
 
         std::cout << "Es correcto la operacion (S/N)? ";
         std::cin >> confirmar;

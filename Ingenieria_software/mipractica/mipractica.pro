@@ -15,6 +15,7 @@ SOURCES += \
         menulistaredif.cpp \
         menureservarapart.cpp \
         menureservasmensuales.cpp \
+        referenciaapartamento.cpp \
         reserva.cpp
 
 HEADERS += \
@@ -30,4 +31,5 @@ HEADERS += \
     menulistaredif.h \
     menureservarapart.h \
     menureservasmensuales.h \
+    referenciaapartamento.h \
     reserva.h

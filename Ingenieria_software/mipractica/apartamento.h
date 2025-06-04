@@ -3,6 +3,7 @@
 
 #include "TiposComunes.h"
 #include "reserva.h"
+#include "referenciaapartamento.h"
 #include <vector>
 
 class Apartamento
@@ -10,12 +11,18 @@ class Apartamento
 public:
     Apartamento(TipoApartamento tipo, int idApartamento);
     bool disponible(Fecha entrada, Fecha salida) const;
-    TipoApartamento getTipo() const;
+    const TipoApartamento &getTipo() const;
     void addReserva(Reserva reserva);
     int getIdApartamento() const;
+    const std::vector<Reserva> getReservas() const;
+    /**
+     * @brief getReservasMes Devuelve lista con reservas del mes
+     * @param mes
+     * @return
+     */
+    const std::vector<Reserva> getReservasMes(int mes, int anio) const;
 private:
-    TipoApartamento tipo;
-    int idApartamento;  //dentro de cada TipoApartamento
+    ReferenciaApartamento referencia;
     std::vector<Reserva> reservas;
 };
 

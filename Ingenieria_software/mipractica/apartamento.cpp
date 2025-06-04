@@ -1,9 +1,8 @@
 #include "apartamento.h"
 
 Apartamento::Apartamento(TipoApartamento tipo, int idApartamento) {
-    this->tipo = tipo;
-    this->idApartamento = idApartamento;
-
+    this->referencia.setTipo(tipo);
+    this->referencia.setIdApartamento(idApartamento);
 }
 
 bool Apartamento::disponible(Fecha entrada, Fecha salida) const
@@ -12,17 +11,36 @@ bool Apartamento::disponible(Fecha entrada, Fecha salida) const
     return true;
 }
 
-TipoApartamento Apartamento::getTipo() const
+const TipoApartamento& Apartamento::getTipo() const
 {
-    return this->tipo;
+    return this->referencia.getTipo();
+}
+
+int Apartamento::getIdApartamento() const
+{
+    return this->referencia.getIdApartamento();
+}
+
+const std::vector<Reserva> Apartamento::getReservas() const
+{
+    return this->reservas;
+}
+
+const std::vector<Reserva> Apartamento::getReservasMes(int mes, int anio) const
+{
+    std::vector<Reserva> reservasMes;
+
+    for (const Reserva& reserva : reservas) {
+        if ((reserva.getFechaEntrada().getMes() == mes && reserva.getFechaEntrada().getAnio() == anio)
+            || (reserva.getFechaSalida().getMes() == mes && reserva.getFechaSalida().getAnio() == anio)) {
+            reservasMes.push_back(reserva);
+        }
+    }
+
+    return reservasMes;
 }
 
 void Apartamento::addReserva(Reserva reserva)
 {
     this->reservas.push_back(reserva);
-}
-
-int Apartamento::getIdApartamento() const
-{
-    return this->idApartamento;
 }

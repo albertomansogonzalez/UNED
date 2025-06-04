@@ -30,6 +30,7 @@ public:
      */
     int numApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida);
     Reserva reservar(bool confirmacion, Reserva reserva);
+    std::vector<Reserva> obtenerReservasMes(int idApartamento, TipoApartamento tipo, int mes, int anio);
 private:
     int idEdificio;
     char nombre [20];

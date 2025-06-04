@@ -42,13 +42,23 @@ public:
      * @return Nº reservas
      */
     int numReservaAnio(int anio);
+
+    /**
+     * @brief obtenerReservas Devolver un vector con todas las reservas de un apartamento concreto en ese mes
+     * @param referencia
+     * @param mes
+     * @param anio
+     * @return
+     */
+    std::vector<Reserva> obtenerReservasMes(ReferenciaApartamento referencia, int mes, int anio);
+
 private:
     /**
      * @brief GesRAE puede almacenar hasta 5 edificios.
      *
      * Los edificios se ordenan según su id del 1 al 5, en posiciones [0] a [4] (@c idEdificio).
      */
-    Edificio edificios[5];
+    Edificio edificios[5];  //TODO mejor poner un getter  para evitar el problema de poner todo el rato -1.
 
     std::map<int,int> reservasPorAnio;
 

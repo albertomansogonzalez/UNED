@@ -103,6 +103,7 @@ Reserva Edificio::reservar(bool confirmacion, Reserva reserva)
     //se reserva el primer apartamento que se encuentre disponible
     for (Apartamento& apartamento: apartamentos){
         if (apartamento.getTipo() == reserva.getTipo() && apartamento.disponible(reserva.getFechaEntrada(), reserva.getFechaSalida())){
+        //if (apartamento.getTipo() == reserva.getTipo() && apartamento.disponible(reserva.getFechaEntrada(), reserva.getFechaSalida())){
             reserva.setidApartamento(apartamento.getIdApartamento());
             if (confirmacion) apartamento.addReserva(reserva);
             return reserva;
@@ -110,6 +111,18 @@ Reserva Edificio::reservar(bool confirmacion, Reserva reserva)
     }
 
     //TODO, que pasa si no hay reserva disponible?
+}
+
+std::vector<Reserva> Edificio::obtenerReservasMes(int idApartamento, TipoApartamento tipo, int mes, int anio)
+{
+    //primero encontrar el apartamento
+    for (const Apartamento& apartamento: apartamentos){
+        if (apartamento.getIdApartamento() == idApartamento && apartamento.getTipo() == tipo){
+            //dentro del apartamento, coger las reservas
+            return apartamento.getReservasMes(mes, anio);
+        }
+    }
+
 }
 
 

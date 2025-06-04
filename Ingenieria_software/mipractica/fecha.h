@@ -11,11 +11,12 @@ public:
     int getDia() const;
     int getMes() const;
     int getAnio() const;
-    const std::string getFecha() const;
+    const std::string toString() const;
     void setDia(int dia);
     void setMes(int mes);
-    void setAnio(int anio);    
-    static Fecha calcularFechaFinal(Fecha dia, int duracion);
+    void setAnio(int anio);
+    Fecha calcularFechaFinal(int duracion) const;
+    int calcularDuracion(Fecha fechaSalida) const;
 private:
     int dia;
     int mes;

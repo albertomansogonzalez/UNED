@@ -3,6 +3,7 @@
 
 #include "fecha.h"
 #include "TiposComunes.h"
+#include "referenciaapartamento.h"
 
 class Reserva
 {
@@ -19,7 +20,7 @@ public:
     void setNombreEdificio(const char *nombre);
     void setTipoApartamento(TipoApartamento tipo);
     int getNumReserva() const;
-    const char* getRefApartamento() const;
+    ReferenciaApartamento getRefApartamento() const;
     const char *getNombreEdificio() const;
     const Fecha& getFechaEntrada() const;
     const Fecha& getFechaSalida() const;
@@ -28,12 +29,12 @@ public:
     int getIdApartamento() const;
     const TipoApartamento& getTipo() const;
 private:
+    /**
+     * @brief numReserva Dentro de cada anio
+     */
     int numReserva;
-    int idEdificio;
     char nombreEdificio [20];
-    int idApartamento;
-    char refApartamento [8];
-    TipoApartamento tipo;
+    ReferenciaApartamento referencia;
     Fecha fechaEntrada;
     int duracion;
     Fecha fechaSalida;
