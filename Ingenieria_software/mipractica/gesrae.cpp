@@ -7,9 +7,9 @@ void GesRAE::aniadirEdificio(Edificio edificio)
     this->edificios[edificio.getIdEdificio() - 1] = edificio;
 }
 
-const Edificio& GesRAE::getEdicicio(int id) const
+InfoEdificio GesRAE::getInfoEdicicio(int id) const
 {
-    return this->edificios[id - 1];
+    return edificios[id - 1].getInfoEdificio();
 }
 
 int GesRAE::numApartaDisponible(int idEdificio, TipoApartamento tipo, Fecha entrada, Fecha salida)

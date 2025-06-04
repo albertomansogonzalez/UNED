@@ -5,6 +5,15 @@
 #include "apartamento.h"
 #include "reserva.h"
 
+//DTO Data Transfer Objet
+struct InfoEdificio{
+    int idEdificio;
+    char nombre [20];
+    int nBasicos;
+    int nNormales;
+    int nLujo;
+};
+
 class Edificio
 {
 public:
@@ -20,6 +29,7 @@ public:
     int getNBasicos() const;
     int getNNormales() const;
     int getNLujo() const;
+    InfoEdificio getInfoEdificio() const;
     const std::vector<Apartamento>& getApartamentos();
     /**
      * @brief numApartamentoDisponible

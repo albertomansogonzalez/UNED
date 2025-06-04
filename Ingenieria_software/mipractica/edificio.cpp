@@ -81,6 +81,19 @@ int Edificio::getNLujo() const
     return this->nLujo;
 }
 
+InfoEdificio Edificio::getInfoEdificio() const
+{
+    InfoEdificio infoEdificio;
+    infoEdificio.idEdificio = this->idEdificio;
+    strcpy(infoEdificio.nombre, this->nombre);
+    infoEdificio.nBasicos = this->nBasicos;
+    infoEdificio.nNormales = this->nNormales;
+    infoEdificio.nLujo = this->nLujo;
+
+    return infoEdificio;
+
+}
+
 const std::vector<Apartamento> &Edificio::getApartamentos()
 {
     return this->apartamentos;

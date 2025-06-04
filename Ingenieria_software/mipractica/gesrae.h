@@ -13,7 +13,7 @@ public:
     GesRAE();
 
     void aniadirEdificio(Edificio edificio);
-    const Edificio& getEdicicio(int id) const;
+    InfoEdificio getInfoEdicicio(int id) const;
 
     /**
      * @brief apartaDisponible
