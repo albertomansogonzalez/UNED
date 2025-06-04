@@ -4,6 +4,7 @@
 #include <vector>
 #include "apartamento.h"
 #include "reserva.h"
+#include <optional>
 
 //DTO Data Transfer Objet
 struct InfoEdificio{
@@ -39,7 +40,7 @@ public:
      * @return Nº apartamentos disponibles
      */
     int numApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida);
-    Reserva reservar(bool confirmacion, Reserva reserva);
+    std::optional<Reserva> reservar(bool confirmacion, Reserva reserva);
     std::vector<Reserva> obtenerReservasMes(int idApartamento, TipoApartamento tipo, int mes, int anio);
 private:
     int idEdificio;

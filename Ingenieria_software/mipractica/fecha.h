@@ -8,6 +8,10 @@ class Fecha
 public:
     Fecha();
     Fecha(int dia, int mes, int anio);
+    bool operator<(const Fecha& otra) const;
+    bool operator==(const Fecha& otra) const;
+    bool operator>(const Fecha& otra) const;
+    bool operator>=(const Fecha& otra) const;
     int getDia() const;
     int getMes() const;
     int getAnio() const;

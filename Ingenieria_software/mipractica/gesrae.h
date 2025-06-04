@@ -2,6 +2,7 @@
 #define GESRAE_H
 
 #include <map>
+#include <optional>
 #include "edificio.h"
 #include "TiposComunes.h"
 #include "fecha.h"
@@ -34,7 +35,7 @@ public:
      * @param fechaSalida
      * @return
      */
-    Reserva reservar(bool confirmacion, int idEdificio, TipoApartamento tipo, Fecha fechaEntrada, Fecha fechaSalida);
+    std::optional<Reserva> reservar(bool confirmacion, int idEdificio, TipoApartamento tipo, Fecha fechaEntrada, Fecha fechaSalida);
 
     /**
      * @brief numReservaAnio Devulve nº reservas en un anio

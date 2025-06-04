@@ -7,7 +7,13 @@ Apartamento::Apartamento(TipoApartamento tipo, int idApartamento) {
 
 bool Apartamento::disponible(Fecha entrada, Fecha salida) const
 {
-    //TODO
+    //TODO revisar
+    //Mirar si el apartamento esta disponible entre 2 fechas
+    for (const Reserva& reserva : reservas) {
+        if (reserva.getFechaEntrada() >= entrada && salida >= reserva.getFechaSalida()) {
+            return false;
+        }
+    }
     return true;
 }
 

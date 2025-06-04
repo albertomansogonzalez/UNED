@@ -17,11 +17,19 @@ int GesRAE::numApartaDisponible(int idEdificio, TipoApartamento tipo, Fecha entr
     return edificios[idEdificio - 1].numApartamentoDisponible(tipo, entrada, salida);
 }
 
-Reserva GesRAE::reservar(bool confirmacion, int idEdificio, TipoApartamento tipo, Fecha fechaEntrada, Fecha fechaSalida)
+std::optional<Reserva> GesRAE::reservar(bool confirmacion, int idEdificio, TipoApartamento tipo, Fecha fechaEntrada, Fecha fechaSalida)
 {
     //el gestor crea una proto-reserva, con algunos datos
-    Reserva reserva(++reservasPorAnio[fechaEntrada.getAnio()], idEdificio, edificios[idEdificio - 1].getNombre(), tipo, 0/*idApartamento lo rellena el edificio*/, fechaEntrada, fechaSalida);
-    return edificios[reserva.getIdEdificio() - 1].reservar(confirmacion, reserva);
+    //TODO revisar cambiar esta Reserva por un DTO InfoReserva
+    Reserva protoReserva(reservasPorAnio[fechaEntrada.getAnio()] + 1, idEdificio, edificios[idEdificio - 1].getNombre(), tipo, 0/*idApartamento lo rellena el edificio*/, fechaEntrada, fechaSalida);
+
+    auto reserva = edificios[protoReserva.getIdEdificio() - 1].reservar(confirmacion, protoReserva);
+    if (confirmacion && reserva){
+        //si la reserva se ha cumplido
+        reservasPorAnio[fechaEntrada.getAnio()]++;
+    }
+
+    return reserva;
 }
 
 int GesRAE::numReservaAnio(int anio)

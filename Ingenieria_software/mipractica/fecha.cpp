@@ -11,6 +11,33 @@ Fecha::Fecha(int dia, int mes, int anio) {
     this->anio = anio;
 }
 
+bool Fecha::operator<(const Fecha& otra) const {
+    if (anio < otra.anio) return true;
+    if (anio > otra.anio) return false;
+
+    // Si mismo año, comparar meses
+    if (mes < otra.mes) return true;
+    if (mes > otra.mes) return false;
+
+    // Si mismo mes, comparar días
+    return dia < otra.dia;
+}
+
+bool Fecha::operator==(const Fecha &otra) const
+{
+    return (dia == otra.dia && mes == otra.mes && anio == otra.anio);
+}
+
+bool Fecha::operator>(const Fecha &otra) const
+{
+    return otra < *this;  // Es decir, a > b <=> b < a
+}
+
+bool Fecha::operator>=(const Fecha &otra) const
+{
+    return !(*this < otra);
+}
+
 int Fecha::getDia() const
 {
     return this->dia;
