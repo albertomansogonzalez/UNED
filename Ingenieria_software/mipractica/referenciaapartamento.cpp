@@ -26,7 +26,7 @@ ReferenciaApartamento::ReferenciaApartamento(std::string texto)
 
 }
 
-ReferenciaApartamento::ReferenciaApartamento(TipoApartamento tipo, int idApartamento, int idEdificio)
+ReferenciaApartamento::ReferenciaApartamento(TipoApartamento tipo, int idEdificio, int idApartamento)
 {
     this->tipo = tipo;
     this->idApartamento = idApartamento;
@@ -35,7 +35,6 @@ ReferenciaApartamento::ReferenciaApartamento(TipoApartamento tipo, int idApartam
 
 std::string ReferenciaApartamento::getTexto() const
 {
-    std::string texto;
     char letraTipo;
     switch(tipo){
         case TipoApartamento::Basico: letraTipo = 'B'; break;
@@ -43,7 +42,9 @@ std::string ReferenciaApartamento::getTexto() const
         case TipoApartamento::Lujo: letraTipo = 'L'; break;
     }
     char buffer[9];
-    std::snprintf(buffer, sizeof(buffer), "APT%02d%c%02d", idEdificio, letraTipo, idApartamento);return texto;
+    std::snprintf(buffer, sizeof(buffer), "APT%02d%c%02d", idEdificio, letraTipo, idApartamento);
+
+    return std::string(buffer);
 }
 
 const TipoApartamento& ReferenciaApartamento::getTipo() const

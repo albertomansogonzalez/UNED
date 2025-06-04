@@ -9,7 +9,7 @@ class ReferenciaApartamento
 public:
     ReferenciaApartamento();
     ReferenciaApartamento(std::string texto);
-    ReferenciaApartamento(TipoApartamento tipo, int idApartamento, int idEdificio);
+    ReferenciaApartamento(TipoApartamento tipo, int idEdificio, int idApartamento);
     std::string getTexto() const;
     const TipoApartamento &getTipo() const;
     int getIdApartamento() const;
