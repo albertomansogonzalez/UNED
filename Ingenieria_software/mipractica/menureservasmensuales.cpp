@@ -24,7 +24,7 @@ void MenuReservasMensuales::mostrar()
     ReferenciaApartamento referencia (TipoApartamento::Normal, idApartamento, idEdificio); //TODO, es solo para probar
 
     std::cout << "\t\tEstado mensual Apartamento:" << referencia.getTexto() << std::endl;
-    std::cout << "\t\t\t\tEdificio: " << gesRAE.getInfoEdicicio(idEdificio).nombre << "\n"; //TODO
+    std::cout << "\t\t\t\tEdificio: " << gesRAE.getInfoEdificio(idEdificio).nombre << "\n"; //TODO
 
 
     std::cout << std::endl << std::endl;

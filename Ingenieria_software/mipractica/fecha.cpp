@@ -38,6 +38,11 @@ bool Fecha::operator>=(const Fecha &otra) const
     return !(*this < otra);
 }
 
+bool Fecha::operator<=(const Fecha &other) const
+{
+    return !(*this > other);
+}
+
 int Fecha::getDia() const
 {
     return this->dia;

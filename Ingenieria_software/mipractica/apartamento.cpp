@@ -10,7 +10,8 @@ bool Apartamento::disponible(Fecha entrada, Fecha salida) const
     //TODO revisar
     //Mirar si el apartamento esta disponible entre 2 fechas
     for (const Reserva& reserva : reservas) {
-        if (reserva.getFechaEntrada() >= entrada && salida >= reserva.getFechaSalida()) {
+        //hay colision si: (A1 <= B2) && (A2 => B1);
+        if (reserva.getFechaEntrada() <= salida && reserva.getFechaSalida() >= entrada) {
             return false;
         }
     }

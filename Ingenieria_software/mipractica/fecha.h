@@ -12,6 +12,7 @@ public:
     bool operator==(const Fecha& otra) const;
     bool operator>(const Fecha& otra) const;
     bool operator>=(const Fecha& otra) const;
+    bool operator<=(const Fecha &other) const;
     int getDia() const;
     int getMes() const;
     int getAnio() const;

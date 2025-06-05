@@ -22,7 +22,7 @@ void MenuApartaDispo::mostrar()
     std::cin >> duracion;
 
     Fecha entrada(diaEntrada, mesEntrada, anioEntrada);
-    std::cout << std::endl << "El edificio "<< gesRAE.getInfoEdicicio(idEdificio).nombre << "desde el " << entrada.toString() << " y " << duracion << " dias de estancia, tendria disponibles:" << std::endl << std::endl;
+    std::cout << std::endl << "El edificio "<< gesRAE.getInfoEdificio(idEdificio).nombre << "desde el " << entrada.toString() << " y " << duracion << " dias de estancia, tendria disponibles:" << std::endl << std::endl;
 
     std::cout << "\t" << gesRAE.numApartaDisponible(idEdificio,TipoApartamento::Basico, entrada, entrada.calcularFechaFinal(duracion)) << " apartamentos de tipo Basico\n";
     std::cout << "\t" << gesRAE.numApartaDisponible(idEdificio,TipoApartamento::Normal, entrada, entrada.calcularFechaFinal(duracion)) << " apartamentos de tipo Normal\n";
