@@ -16,7 +16,8 @@ SOURCES += \
         menureservarapart.cpp \
         menureservasmensuales.cpp \
         referenciaapartamento.cpp \
-        reserva.cpp
+        reserva.cpp \
+        tests.cpp
 
 HEADERS += \
     TiposComunes.h \
@@ -33,3 +34,5 @@ HEADERS += \
     menureservasmensuales.h \
     referenciaapartamento.h \
     reserva.h
+
+INCLUDEPATH += .
