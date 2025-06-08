@@ -5,7 +5,7 @@ MenuListarEdif::MenuListarEdif(GesRAE &gesRAE): gesRAE(gesRAE) {}
 
 void MenuListarEdif::mostrar()
 {
-    std::cout << std::endl << "Id\tNombre\tAptos Basicos\tAptos Normales\tApt de Lujo" << std::endl;
+    std::cout << std::endl << "Id\tNombre\tAptos Basicos\tAptos Normales\tApt de Lujo" << std::endl << std::endl;
     for (int i = 1; i <= 5; i++){
         const InfoEdificio& e = gesRAE.getInfoEdificio(i);
         if (e.idEdificio != -1){

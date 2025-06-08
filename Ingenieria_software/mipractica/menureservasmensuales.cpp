@@ -10,23 +10,26 @@ void MenuReservasMensuales::mostrar()
     std::string refTexto; //TODO
     int mes;
     int anio;
-    int idEdificio,idApartamento;
+    //int idEdificio,idApartamento; //TODO borrar
     std::cout << "Reservas Mensuales Apartamento" << std::endl;
-    //std::cout << "Referencia Apartamento?"; //TODO
-    //std::cin >> refTexto; //TODO
-    std::cout << "id edificio? "; std::cin >> idEdificio;
-    std::cout << "id apartamento? "; std::cin >> idApartamento;
+    std::cout << "Referencia Apartamento? ";
+    std::cin >> refTexto;
+    ReferenciaApartamento referencia(refTexto); //TODO que pasa si formato incorrecto??
+
     std::cout << "Seleccion mes? ";
     std::cin >> mes;
     std::cout << "Seleccion anio? ";
     std::cin >> anio;
 
-    ReferenciaApartamento referencia (TipoApartamento::Normal, idApartamento, idEdificio); //TODO, es solo para probar
+    std::cout << "\nidEdificio: " << referencia.getIdEdificio(); //TODO borrar
+    std::cout << "\nidApartamento: " << referencia.getIdApartamento(); //TODO borrar
+    //std::cout << "\nidApartamento: " << referencia.getTipo(); //TODO borrar
+    //ReferenciaApartamento referencia (TipoApartamento::Normal, idApartamento, idEdificio); //TODO, es solo para probar
 
     std::cout << "\t\tEstado mensual Apartamento:" << referencia.getTexto() << std::endl;
-    std::cout << "\t\t\t\tEdificio: " << gesRAE.getInfoEdificio(idEdificio).nombre << "\n"; //TODO
+    std::cout << "\t\t\t\tEdificio: " << gesRAE.getInfoEdificio(referencia.getIdEdificio()).nombre << "\n"; //TODO
 
-
+    //TODO Printear el calendarios
     std::cout << std::endl << std::endl;
 
     auto reservas = gesRAE.obtenerReservasMes(referencia, mes, anio);

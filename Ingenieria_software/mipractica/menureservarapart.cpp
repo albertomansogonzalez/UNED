@@ -19,11 +19,7 @@ void MenuReservarApart::mostrar()
     std::cin >> idEdificio;
     std::cout << "\tTipo de Apartamento (B-Basico/N-Normal/L-Lujo)? ";
     std::cin >> letraTipo;
-    switch (letraTipo) {
-        case 'B': case 'b': tipo = TipoApartamento::Basico; break;
-        case 'N': case 'n': tipo = TipoApartamento::Normal; break;
-        case 'L': case 'l': tipo = TipoApartamento::Lujo; break;
-    }
+    tipo = charToTipoApartamento(letraTipo);
     std::cout << "\tFecha de Entrada: Dia? ";
     std::cin >> diaEntrada;
     std::cout << "\tFecha de Entrada: Mes? ";

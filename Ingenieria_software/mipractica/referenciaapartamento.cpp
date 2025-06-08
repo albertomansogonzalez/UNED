@@ -8,17 +8,7 @@ ReferenciaApartamento::ReferenciaApartamento(std::string texto)
     //TODO evitar estilo C
     char letraTipo;
     if (std::sscanf(texto.c_str(), "APT%02d%c%02d", &this->idEdificio, &letraTipo, &this->idApartamento) == 3) {
-        switch(letraTipo){
-        case 'B':
-            this->tipo = TipoApartamento::Basico;
-            break;
-        case 'N':
-            this->tipo = TipoApartamento::Normal;
-            break;
-        case 'L':
-            this->tipo = TipoApartamento::Lujo;
-            break;
-}
+        this->tipo = charToTipoApartamento(letraTipo);
     } else {
         //TODO error
         //std::cout << "Error al parsear el texto.\n";
@@ -35,12 +25,7 @@ ReferenciaApartamento::ReferenciaApartamento(TipoApartamento tipo, int idEdifici
 
 std::string ReferenciaApartamento::getTexto() const
 {
-    char letraTipo;
-    switch(tipo){
-        case TipoApartamento::Basico: letraTipo = 'B'; break;
-        case TipoApartamento::Normal: letraTipo = 'N'; break;
-        case TipoApartamento::Lujo: letraTipo = 'L'; break;
-    }
+    char letraTipo = tipoApartamentoToChar(this->tipo);
     char buffer[9];
     std::snprintf(buffer, sizeof(buffer), "APT%02d%c%02d", idEdificio, letraTipo, idApartamento);
 

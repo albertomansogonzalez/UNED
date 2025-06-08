@@ -5,7 +5,7 @@
 
 #include "doctest.h"
 
-
+//TODO, ordenar ficheros en carpetas, src/, include/, test/ ...
 int main()
 {
 
@@ -17,6 +17,11 @@ int main()
 
 
     GesRAE gesRAE;
+
+    gesRAE.aniadirEdificio(Edificio(1, "Neptuno", 3, 12, 2));
+    gesRAE.aniadirEdificio(Edificio(3, "Apolo", 8, 5, 3));
+    gesRAE.aniadirEdificio(Edificio(4, "Zeus", 9, 6, 5));
+    gesRAE.aniadirEdificio(Edificio(5, "Atenea", 4, 9, 2));
 
     MenuGesRAE menuGesRAE(gesRAE);
     menuGesRAE.mostrar();
