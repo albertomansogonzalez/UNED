@@ -2,6 +2,7 @@
 #define EDIFICIO_H
 
 #include <vector>
+#include <string>
 #include "apartamento.h"
 #include "reserva.h"
 #include <optional>
@@ -9,7 +10,7 @@
 //DTO Data Transfer Objet
 struct InfoEdificio{
     int idEdificio;
-    char nombre [20];
+    std::string nombre;
     int nBasicos;
     int nNormales;
     int nLujo;
@@ -26,7 +27,7 @@ public:
     void setNNormales(int nNormales);
     void setNLujo(int nLujo);
     int getIdEdificio() const;
-    const char* getNombre() const;
+    const std::string getNombre() const;
     int getNBasicos() const;
     int getNNormales() const;
     int getNLujo() const;
@@ -44,7 +45,7 @@ public:
     std::vector<Reserva> obtenerReservasMes(int idApartamento, TipoApartamento tipo, int mes, int anio);
 private:
     int idEdificio;
-    char nombre [20];
+    std::string nombre;
     int nBasicos;
     int nNormales;
     int nLujo;

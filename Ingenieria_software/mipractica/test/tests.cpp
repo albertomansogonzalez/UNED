@@ -36,31 +36,31 @@ TEST_CASE("Creacion de edificios"){
     gesRAE.aniadirEdificio(Edificio(5, "Pluton", 0, 3, 4));
 
     CHECK(gesRAE.getInfoEdificio(1).idEdificio == 1);
-    CHECK(strcmp(gesRAE.getInfoEdificio(1).nombre, "Neptuno") == 0);
+    CHECK(gesRAE.getInfoEdificio(1).nombre == "Neptuno");
     CHECK(gesRAE.getInfoEdificio(1).nBasicos == 1);
     CHECK(gesRAE.getInfoEdificio(1).nNormales == 1);
     CHECK(gesRAE.getInfoEdificio(1).nLujo == 1);
 
     CHECK(gesRAE.getInfoEdificio(2).idEdificio == 2);
-    CHECK(strcmp(gesRAE.getInfoEdificio(2).nombre, "Saturno") == 0);
+    CHECK(gesRAE.getInfoEdificio(2).nombre == "Saturno");
     CHECK(gesRAE.getInfoEdificio(2).nBasicos == 5);
     CHECK(gesRAE.getInfoEdificio(2).nNormales == 6);
     CHECK(gesRAE.getInfoEdificio(2).nLujo == 7);
 
     CHECK(gesRAE.getInfoEdificio(3).idEdificio == 3);
-    CHECK(strcmp(gesRAE.getInfoEdificio(3).nombre, "Jupiter") == 0);
+    CHECK(gesRAE.getInfoEdificio(3).nombre == "Jupiter");
     CHECK(gesRAE.getInfoEdificio(3).nBasicos == 2);
     CHECK(gesRAE.getInfoEdificio(3).nNormales == 8);
     CHECK(gesRAE.getInfoEdificio(3).nLujo == 9);
 
     CHECK(gesRAE.getInfoEdificio(4).idEdificio == 4);
-    CHECK(strcmp(gesRAE.getInfoEdificio(4).nombre, "Urano") == 0);
+    CHECK(gesRAE.getInfoEdificio(4).nombre == "Urano");
     CHECK(gesRAE.getInfoEdificio(4).nBasicos == 5);
     CHECK(gesRAE.getInfoEdificio(4).nNormales == 0);
     CHECK(gesRAE.getInfoEdificio(4).nLujo == 3);
 
     CHECK(gesRAE.getInfoEdificio(5).idEdificio == 5);
-    CHECK(strcmp(gesRAE.getInfoEdificio(5).nombre, "Pluton") == 0);
+    CHECK(gesRAE.getInfoEdificio(5).nombre == "Pluton");
     CHECK(gesRAE.getInfoEdificio(5).nBasicos == 0);
     CHECK(gesRAE.getInfoEdificio(5).nNormales == 3);
     CHECK(gesRAE.getInfoEdificio(5).nLujo == 4);
@@ -69,31 +69,32 @@ TEST_CASE("Creacion de edificios"){
     gesRAE.aniadirEdificio(Edificio(3, "Marte", 3, 6, 0));
 
     CHECK(gesRAE.getInfoEdificio(1).idEdificio == 1);
-    CHECK(strcmp(gesRAE.getInfoEdificio(1).nombre, "Neptuno") == 0);
+    CHECK(gesRAE.getInfoEdificio(1).nombre == "Neptuno");
     CHECK(gesRAE.getInfoEdificio(1).nBasicos == 1);
     CHECK(gesRAE.getInfoEdificio(1).nNormales == 1);
     CHECK(gesRAE.getInfoEdificio(1).nLujo == 1);
 
     CHECK(gesRAE.getInfoEdificio(2).idEdificio == 2);
-    CHECK(strcmp(gesRAE.getInfoEdificio(2).nombre, "Saturno") == 0);
+    CHECK(gesRAE.getInfoEdificio(2).nombre == "Saturno");
     CHECK(gesRAE.getInfoEdificio(2).nBasicos == 5);
     CHECK(gesRAE.getInfoEdificio(2).nNormales == 6);
     CHECK(gesRAE.getInfoEdificio(2).nLujo == 7);
 
     CHECK(gesRAE.getInfoEdificio(3).idEdificio == 3);
-    CHECK(strcmp(gesRAE.getInfoEdificio(3).nombre, "Marte") == 0);
+    CHECK(gesRAE.getInfoEdificio(3).nombre == "Marte");
     CHECK(gesRAE.getInfoEdificio(3).nBasicos == 3);
     CHECK(gesRAE.getInfoEdificio(3).nNormales == 6);
     CHECK(gesRAE.getInfoEdificio(3).nLujo == 0);
 
     CHECK(gesRAE.getInfoEdificio(4).idEdificio == 4);
-    CHECK(strcmp(gesRAE.getInfoEdificio(4).nombre, "Urano") == 0);
+    CHECK(gesRAE.getInfoEdificio(4).nombre == "Urano");
     CHECK(gesRAE.getInfoEdificio(4).nBasicos == 5);
     CHECK(gesRAE.getInfoEdificio(4).nNormales == 0);
     CHECK(gesRAE.getInfoEdificio(4).nLujo == 3);
 
     CHECK(gesRAE.getInfoEdificio(5).idEdificio == 5);
-    CHECK(strcmp(gesRAE.getInfoEdificio(5).nombre, "Pluton") == 0);
+    CHECK(gesRAE.getInfoEdificio(5).nombre == "Pluton");
+    CHECK(gesRAE.getInfoEdificio(5).nombre == "Pluton");
     CHECK(gesRAE.getInfoEdificio(5).nBasicos == 0);
     CHECK(gesRAE.getInfoEdificio(5).nNormales == 3);
     CHECK(gesRAE.getInfoEdificio(5).nLujo == 4);

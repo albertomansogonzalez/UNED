@@ -8,10 +8,10 @@ SOURCES += \
         main.cpp \
         resumenmensual.cpp \
         src/types/fecha.cpp \
+        src/types/referenciaapartamento.cpp \
         src/core/apartamento.cpp \
         src/core/edificio.cpp \
         src/core/gesrae.cpp \
-        src/core/referenciaapartamento.cpp \
         src/core/reserva.cpp \
         src/ui/menuapartadispo.cpp \
         src/ui/menueditedif.cpp \
@@ -24,11 +24,11 @@ SOURCES += \
 HEADERS += \
     include/types/TiposComunes.h \
     include/types/fecha.h \
+    include/types/referenciaapartamento.h \
     include/core/apartamento.h \
     include/core/edificio.h \
     include/core/gesrae.h \
     include/core/reserva.h \
-    include/core/referenciaapartamento.h \
     include/ui/imenu.h \
     include/ui/menuapartadispo.h \
     include/ui/menueditedif.h \

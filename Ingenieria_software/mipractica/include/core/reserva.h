@@ -9,9 +9,9 @@ class Reserva
 {
 public:
     Reserva();
-    Reserva(int numReserva, int idEdificio,const char* nombreEdificio, TipoApartamento tipo,int idApartaDispo, Fecha fechaEntrada, Fecha fechaSalida);
+    Reserva(int numReserva, int idEdificio,std::string nombreEdificio, TipoApartamento tipo,int idApartaDispo, Fecha fechaEntrada, Fecha fechaSalida);
     void setNumReserva(int numReserva);
-    void setRefApartamento(char* refApartamento);
+    void setRefApartamento(std::string refApartamento);
     void setFechaEntrada(const Fecha& fechaEntrada);
     void setFechaSalida(const Fecha& fechaSalida);
     void setDuracion(int duracion);
@@ -21,7 +21,7 @@ public:
     void setTipoApartamento(TipoApartamento tipo);
     int getNumReserva() const;
     ReferenciaApartamento getRefApartamento() const;
-    const char *getNombreEdificio() const;
+    std::string getNombreEdificio() const;
     const Fecha& getFechaEntrada() const;
     const Fecha& getFechaSalida() const;
     int getDuracion() const;
@@ -33,7 +33,7 @@ private:
      * @brief numReserva Dentro de cada anio
      */
     int numReserva;
-    char nombreEdificio [20];
+    std::string nombreEdificio;
     ReferenciaApartamento referencia;
     Fecha fechaEntrada;
     int duracion;

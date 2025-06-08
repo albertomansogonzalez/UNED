@@ -4,7 +4,7 @@
 
 Edificio::Edificio() {
     this->idEdificio = -1;
-    strcpy(this->nombre, "");
+    this->nombre =  "";
     this->nBasicos = 0;
     this->nNormales = 0;
     this->nLujo = 0;
@@ -16,7 +16,7 @@ Edificio::Edificio() {
 Edificio::Edificio(int idEdificio, char nombre[], int nBasicos, int nNormales, int nLujo)
 {
     this->idEdificio = idEdificio;
-    strcpy(this->nombre, nombre);
+    this->nombre = nombre;
     this->nBasicos = nBasicos;
     this->nNormales = nNormales;
     this->nLujo = nLujo;
@@ -39,7 +39,7 @@ void Edificio::setIdEdificio(int idEdificio)
 
 void Edificio::setNombre(char nombre [20])
 {
-    strcpy(nombre, this->nombre);
+    this->nombre = nombre;
 }
 
 void Edificio::setNBasicos(int nBasicos)
@@ -62,7 +62,7 @@ int Edificio::getIdEdificio() const
     return this->idEdificio;
 }
 
-const char* Edificio::getNombre() const
+const std::string Edificio::getNombre() const
 {
     return this->nombre;
 }
@@ -86,7 +86,7 @@ InfoEdificio Edificio::getInfoEdificio() const
 {
     InfoEdificio infoEdificio;
     infoEdificio.idEdificio = this->idEdificio;
-    strcpy(infoEdificio.nombre, this->nombre);
+    infoEdificio.nombre = this->nombre;
     infoEdificio.nBasicos = this->nBasicos;
     infoEdificio.nNormales = this->nNormales;
     infoEdificio.nLujo = this->nLujo;
