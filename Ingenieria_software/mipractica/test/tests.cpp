@@ -253,3 +253,64 @@ TEST_CASE("Disponibilidad de apartamentos"){
     CHECK_FALSE(gesRAE.reservar(true, 2, TipoApartamento::Lujo, Fecha(27,4,2027), Fecha(30,4,2027)));
     CHECK(gesRAE.numReservaAnio(2027) == 3); //se mantiene
 }
+
+TEST_CASE("ReferenciaApartamento"){
+    ReferenciaApartamento ref("APT03N04");
+    CHECK(ref.getTexto() == "APT03N04");
+    CHECK(ref.getIdEdificio() == 3);
+    CHECK(ref.getIdApartamento() == 4);
+    CHECK(ref.getTipo() == TipoApartamento::Normal);
+
+    ReferenciaApartamento ref2("APT12B13");
+    CHECK(ref2.getTexto() == "APT12B13");
+    CHECK(ref2.getIdEdificio() == 12);
+    CHECK(ref2.getIdApartamento() == 13);
+    CHECK(ref2.getTipo() == TipoApartamento::Basico);
+
+    ReferenciaApartamento ref3("APT06L07");
+    CHECK(ref3.getTexto() == "APT06L07");
+    CHECK(ref3.getIdEdificio() == 06);
+    CHECK(ref3.getIdApartamento() == 07);
+    CHECK(ref3.getTipo() == TipoApartamento::Lujo);
+}
+
+TEST_CASE("Tipo Fecha"){
+    Fecha f1(8,6,2025);
+    Fecha f2(12,6,2025);
+    CHECK(f1.calcularDuracion(f2) == 5);
+
+    Fecha f3(28,2,2024);
+    Fecha f4(1,3,2024);
+    CHECK(f3.calcularDuracion(f4) == 3);
+
+    Fecha f5(28,2,2025);
+    Fecha f6(1,3,2025);
+    CHECK(f5.calcularDuracion(f6) == 2);
+
+    CHECK(Fecha::diaDeLaSemana(8,6,2025) == 1); //Domingo es 1
+    CHECK(Fecha::diaDeLaSemana(17,12,2004) == 6); //viernes es 6
+    CHECK(Fecha::diaDeLaSemana(13,6,2012) == 4); //miercoles
+    CHECK(Fecha::diaDeLaSemana(7,7,2012) == 0); //sabado
+    CHECK(Fecha::diaDeLaSemana(10,10,2018) == 4);
+    CHECK(Fecha::diaDeLaSemana(18,7,2010) == 1);
+    CHECK(Fecha::diaDeLaSemana(26,5,2022) == 5);
+    CHECK(Fecha::diaDeLaSemana(3,12,2020) == 5);
+    CHECK(Fecha::diaDeLaSemana(9,1,2021) == 0);
+    CHECK_FALSE(Fecha::esBisiesto(2025));
+    CHECK(Fecha::esBisiesto(2024));
+    CHECK_FALSE(Fecha::esBisiesto(2023));
+    CHECK_FALSE(Fecha::esBisiesto(2022));
+    CHECK_FALSE(Fecha::esBisiesto(2021));
+    CHECK(Fecha::esBisiesto(2020));
+    CHECK(Fecha::esBisiesto(2016));
+    CHECK_FALSE(Fecha::esBisiesto(2015));
+    CHECK(Fecha::esBisiesto(2012));
+    CHECK(Fecha::esBisiesto(2004));
+    CHECK_FALSE(Fecha::esBisiesto(2003));
+    CHECK_FALSE(Fecha::esBisiesto(1993));
+    CHECK(Fecha::esBisiesto(1992));
+
+}
+
+
+

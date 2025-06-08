@@ -6,6 +6,7 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
+        resumenmensual.cpp \
         src/types/fecha.cpp \
         src/core/apartamento.cpp \
         src/core/edificio.cpp \
@@ -34,7 +35,8 @@ HEADERS += \
     include/ui/menugesrae.h \
     include/ui/menulistaredif.h \
     include/ui/menureservarapart.h \
-    include/ui/menureservasmensuales.h
+    include/ui/menureservasmensuales.h \
+    resumenmensual.h
 
 INCLUDEPATH += external \
     include/types \

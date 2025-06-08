@@ -1,5 +1,6 @@
 #include "edificio.h"
 #include <cstring>
+#include <iostream>
 
 Edificio::Edificio() {
     this->idEdificio = -1;
@@ -135,6 +136,8 @@ std::vector<Reserva> Edificio::obtenerReservasMes(int idApartamento, TipoApartam
             return apartamento.getReservasMes(mes, anio);
         }
     }
+
+    std::cerr << "unreachable code\n";
 
 }
 

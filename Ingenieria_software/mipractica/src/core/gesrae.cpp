@@ -39,11 +39,27 @@ int GesRAE::numReservaAnio(int anio)
     return this->reservasPorAnio[anio];
 }
 
-std::vector<Reserva> GesRAE::obtenerReservasMes(ReferenciaApartamento referencia, int mes, int anio)
+ResumenMensual GesRAE::obtenerResumenMensual(ReferenciaApartamento referencia, int mes, int anio)
 {
-    //TODO, primero devuelvo todas, da igual el mes. Luego limitar a solo ese mes
-    return edificios[referencia.getIdEdificio() - 1].obtenerReservasMes(referencia.getIdApartamento(), referencia.getTipo(), mes, anio);
+    ResumenMensual resum;
+    resum.reservas = edificios[referencia.getIdEdificio() - 1].obtenerReservasMes(referencia.getIdApartamento(), referencia.getTipo(), mes, anio);
 
+    for (int i = 0; i < 31; i++){
+        resum.diasReservados[i] = false;
+    }
+    resum.nReservados = 0;
+
+    for (const Reserva& reserva: resum.reservas){
+        //setea a reservado todos los dias de la reserva
+        for (int i = reserva.getFechaEntrada().getDia(); i < reserva.getFechaEntrada().getDia() + reserva.getDuracion(); i++) {
+            ++resum.nReservados;
+            resum.diasReservados[i] = true;
+        }
+    }
+
+    resum.nLibres = Fecha::diasDelMes(mes, anio) - resum.nReservados;
+
+    return resum;
 }
 
 

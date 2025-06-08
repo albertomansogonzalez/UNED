@@ -7,6 +7,7 @@
 #include "TiposComunes.h"
 #include "fecha.h"
 #include "apartamento.h"
+#include "resumenmensual.h"
 
 class GesRAE
 {
@@ -44,14 +45,7 @@ public:
      */
     int numReservaAnio(int anio);
 
-    /**
-     * @brief obtenerReservas Devolver un vector con todas las reservas de un apartamento concreto en ese mes
-     * @param referencia
-     * @param mes
-     * @param anio
-     * @return
-     */
-    std::vector<Reserva> obtenerReservasMes(ReferenciaApartamento referencia, int mes, int anio);
+    ResumenMensual obtenerResumenMensual(ReferenciaApartamento referencia, int mes, int anio);
 
 private:
     /**
