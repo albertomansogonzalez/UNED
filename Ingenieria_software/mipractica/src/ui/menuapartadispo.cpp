@@ -10,8 +10,10 @@ void MenuApartaDispo::mostrar()
     int duracion;
 
     std::cout << std::endl << "Apartamentos Disponibles" << std::endl;
-    std::cout << "\tIdentificador de Edificio? ";
-    std::cin >> idEdificio;
+    do {
+        std::cout << "  Identificador de Edificio? ";
+        std::cin >> idEdificio;
+    }while((idEdificio < 1) || (idEdificio > 5));
     std::cout << "\tFecha de Entrada: Dia? ";
     std::cin >> diaEntrada;
     std::cout << "\tFecha de Entrada: Mes? ";

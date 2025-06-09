@@ -1,6 +1,8 @@
 #ifndef TIPOSCOMUNES_H
 #define TIPOSCOMUNES_H
 
+#include <stdexcept>
+
 enum class TipoApartamento{
     Basico,
     Lujo,
@@ -15,8 +17,6 @@ inline char tipoApartamentoToChar(TipoApartamento tipo) {
         return 'L';
     case TipoApartamento::Normal:
         return 'N';
-    default:;
-        //TODO
     }
 }
 
@@ -28,7 +28,8 @@ inline TipoApartamento charToTipoApartamento(char letra) {
         return TipoApartamento::Normal;
     case 'L': case 'l':
         return TipoApartamento::Lujo;
-    default:; //TODO
+    default:
+        throw std::invalid_argument("Letra invalida para TipoApartamento");
     }
 }
 

@@ -4,13 +4,13 @@
 
 Reserva::Reserva() {}
 
-Reserva::Reserva(int numReserva, int idEdificio, std::string nombreEdificio, TipoApartamento tipo, int idApartaDispo /*TODO revisar el nombre del parametro*/, Fecha fechaEntrada, Fecha fechaSalida)
+Reserva::Reserva(int numReserva, int idEdificio, std::string nombreEdificio, TipoApartamento tipo, int idApartartamento, Fecha fechaEntrada, Fecha fechaSalida)
 {
     this->numReserva = numReserva;
     this->referencia.setIdEdificio(idEdificio);
     this->nombreEdificio = nombreEdificio;
     this->referencia.setTipo(tipo);
-    this->referencia.setIdApartamento(idApartaDispo);
+    this->referencia.setIdApartamento(idApartartamento);
     this->fechaEntrada = fechaEntrada;
     this->fechaSalida = fechaSalida;
     this->duracion = fechaEntrada.calcularDuracion(fechaSalida);

@@ -17,6 +17,7 @@ int main()
 
     GesRAE gesRAE;
 
+    #ifdef DATOS_POR_DEFECTO
     gesRAE.aniadirEdificio(Edificio(1, "Neptuno", 3, 12, 2));
     gesRAE.aniadirEdificio(Edificio(3, "Apolo", 8, 5, 3));
     gesRAE.aniadirEdificio(Edificio(4, "Zeus", 9, 6, 5));
@@ -26,6 +27,7 @@ int main()
     gesRAE.reservar(true, 1, TipoApartamento::Normal, Fecha(2,7,2025), Fecha(3,7,2025));
     gesRAE.reservar(true, 3, TipoApartamento::Normal, Fecha(8,6,2025), Fecha(12,6,2025));
     gesRAE.reservar(true, 1, TipoApartamento::Normal, Fecha(2,6,2025), Fecha(4,6,2025));
+     #endif
 
 
     MenuGesRAE menuGesRAE(gesRAE);

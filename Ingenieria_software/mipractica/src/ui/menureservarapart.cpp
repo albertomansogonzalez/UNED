@@ -15,8 +15,10 @@ void MenuReservarApart::mostrar()
     char confirmar;
 
     std::cout << std::endl << "Reservar Apartamento:" << std::endl << std::endl;
-    std::cout << "\tIdentificador de Edificio? ";
-    std::cin >> idEdificio;
+    do {
+        std::cout << "\tIdentificador de Edificio? ";
+        std::cin >> idEdificio;
+    }while((idEdificio < 1) || (idEdificio > 5));
     std::cout << "\tTipo de Apartamento (B-Basico/N-Normal/L-Lujo)? ";
     std::cin >> letraTipo;
     tipo = charToTipoApartamento(letraTipo);

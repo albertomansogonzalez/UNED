@@ -9,7 +9,7 @@ class Reserva
 {
 public:
     Reserva();
-    Reserva(int numReserva, int idEdificio,std::string nombreEdificio, TipoApartamento tipo,int idApartaDispo, Fecha fechaEntrada, Fecha fechaSalida);
+    Reserva(int numReserva, int idEdificio,std::string nombreEdificio, TipoApartamento tipo,int idApartartamento, Fecha fechaEntrada, Fecha fechaSalida);
     void setIdApartamento(int id);
     int getNumReserva() const;
     ReferenciaApartamento getRefApartamento() const;

@@ -16,8 +16,10 @@ void MenuEditEdif::mostrar()
 
     std::cout << "  Editar Edificio" << std::endl;
     std::cout << std::endl;
-    std::cout << "  Identificador (numero entre 1 y 5)? ";
-    std::cin >> idEdificio;
+    do {
+        std::cout << "  Identificador (numero entre 1 y 5)? ";
+        std::cin >> idEdificio;
+    }while((idEdificio < 1) || (idEdificio > 5));
     std::cout << "  Nombre (entre 1 y 20 caracteres)? ";
     std::cin >> nombre;
     std::cout << "  Numero de Apartamentos Basicos? ";

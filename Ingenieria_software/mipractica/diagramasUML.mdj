@@ -36290,7 +36290,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGXVMTVaNe9HP8="
 							},
-							"name": "SequenceDiagram1",
+							"name": "UC-05 Resumen Mensual",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -36311,9 +36311,9 @@
 											"font": "Arial;13;0",
 											"left": 75.97900390625,
 											"top": 10,
-											"width": 115.9052734375,
+											"width": 150.5634765625,
 											"height": 13,
-											"text": "SequenceDiagram1"
+											"text": "UC-05 Resumen Mensual"
 										},
 										{
 											"_type": "LabelView",

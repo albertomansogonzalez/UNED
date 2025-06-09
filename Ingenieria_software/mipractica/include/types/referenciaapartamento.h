@@ -8,8 +8,8 @@ class ReferenciaApartamento
 {
 public:
     ReferenciaApartamento();
-    ReferenciaApartamento(std::string texto);
     ReferenciaApartamento(TipoApartamento tipo, int idEdificio, int idApartamento);
+    void parsear(std::string texto);
     std::string getTexto() const;
     const TipoApartamento &getTipo() const;
     int getIdApartamento() const;

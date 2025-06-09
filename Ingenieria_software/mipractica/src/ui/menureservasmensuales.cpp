@@ -14,7 +14,14 @@ void MenuReservasMensuales::mostrar()
     std::cout << "Reservas Mensuales Apartamento" << std::endl;
     std::cout << "Referencia Apartamento? ";
     std::cin >> refTexto;
-    ReferenciaApartamento referencia(refTexto); //TODO que pasa si formato incorrecto??
+    ReferenciaApartamento referencia;
+    try{
+        referencia.parsear(refTexto);
+    }catch(const std::invalid_argument& e){
+        std::cerr << "Error: " << e.what();
+        return;
+    }
+
 
     std::cout << "Seleccion mes? ";
     std::cin >> mes;

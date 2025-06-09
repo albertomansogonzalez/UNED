@@ -4,11 +4,8 @@
 #include <vector>
 #include "reserva.h"
 
-class ResumenMensual
+struct ResumenMensual
 {
-public:
-    ResumenMensual();
-
     bool diasReservados[31]; //TODO valorar std::array
     std::vector<Reserva> reservas;
     int nReservados;

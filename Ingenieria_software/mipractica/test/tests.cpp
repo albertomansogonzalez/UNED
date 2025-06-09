@@ -16,7 +16,7 @@ TEST_CASE("Pruebas de Fecha") {
     Fecha f6(3,6,2026);
     Fecha f7(3,6,2025);
     CHECK_FALSE(f1 < f2);
-    //CHECK(f1 <= f2); //TODO falta sobrecargar el operador <=
+    CHECK(f1 <= f2);
     CHECK(f1 == f2);
     CHECK(f1 < f3);
     CHECK_FALSE(f3 == f1);
@@ -196,7 +196,6 @@ TEST_CASE("Disminuir disponibidad al reservar"){
     GesRAE gesRAE;
     gesRAE.aniadirEdificio(Edificio(5, "Saturno", 5, 0, 0));
     CHECK(gesRAE.numApartaDisponible(5, TipoApartamento::Basico, Fecha(1,1,2025), Fecha(20,12,2025)) == 5);
-    //TODO, al reservar
     gesRAE.reservar(false, 5,TipoApartamento::Basico, Fecha(3,5,2025), Fecha(6,5,2025));
     CHECK(gesRAE.numApartaDisponible(5, TipoApartamento::Basico, Fecha(1,1,2025), Fecha(20,12,2025)) == 5);
     gesRAE.reservar(true, 5,TipoApartamento::Basico, Fecha(3,5,2025), Fecha(6,5,2025));
@@ -256,19 +255,22 @@ TEST_CASE("Disponibilidad de apartamentos"){
 }
 
 TEST_CASE("ReferenciaApartamento"){
-    ReferenciaApartamento ref("APT03N04");
+    ReferenciaApartamento ref;
+    ref.parsear("APT03N04");
     CHECK(ref.getTexto() == "APT03N04");
     CHECK(ref.getIdEdificio() == 3);
     CHECK(ref.getIdApartamento() == 4);
     CHECK(ref.getTipo() == TipoApartamento::Normal);
 
-    ReferenciaApartamento ref2("APT12B13");
+    ReferenciaApartamento ref2;
+    ref2.parsear("APT12B13");
     CHECK(ref2.getTexto() == "APT12B13");
     CHECK(ref2.getIdEdificio() == 12);
     CHECK(ref2.getIdApartamento() == 13);
     CHECK(ref2.getTipo() == TipoApartamento::Basico);
 
-    ReferenciaApartamento ref3("APT06L07");
+    ReferenciaApartamento ref3;
+    ref3.parsear("APT06L07");
     CHECK(ref3.getTexto() == "APT06L07");
     CHECK(ref3.getIdEdificio() == 06);
     CHECK(ref3.getIdApartamento() == 07);
@@ -312,6 +314,4 @@ TEST_CASE("Tipo Fecha"){
     CHECK(Fecha::esBisiesto(1992));
 
 }
-
-
 
