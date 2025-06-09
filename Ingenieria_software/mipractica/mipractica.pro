@@ -6,7 +6,6 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-        resumenmensual.cpp \
         src/types/fecha.cpp \
         src/types/referenciaapartamento.cpp \
         src/core/apartamento.cpp \
@@ -25,6 +24,7 @@ HEADERS += \
     include/types/TiposComunes.h \
     include/types/fecha.h \
     include/types/referenciaapartamento.h \
+    include/types/resumenmensual.h \
     include/core/apartamento.h \
     include/core/edificio.h \
     include/core/gesrae.h \

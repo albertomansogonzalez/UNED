@@ -16,39 +16,9 @@ Reserva::Reserva(int numReserva, int idEdificio, std::string nombreEdificio, Tip
     this->duracion = fechaEntrada.calcularDuracion(fechaSalida);
 }
 
-void Reserva::setNumReserva(int numReserva)
-{
-    this->numReserva = numReserva;
-}
-
-void Reserva::setFechaEntrada(const Fecha& fechaEntrada)
-{
-    this->fechaEntrada = fechaEntrada;
-}
-
-void Reserva::setFechaSalida(const Fecha& fechaSalida)
-{
-    this->fechaSalida = fechaSalida;
-}
-
-void Reserva::setIdEdificio(int id)
-{
-    this->referencia.setIdEdificio(id);
-}
-
-void Reserva::setidApartamento(int id)
+void Reserva::setIdApartamento(int id)
 {
     this->referencia.setIdApartamento(id);
-}
-
-void Reserva::setNombreEdificio(const char *nombre)
-{
-    this->nombreEdificio = nombre;
-}
-
-void Reserva::setTipoApartamento(TipoApartamento tipo)
-{
-    this->referencia.setTipo(tipo);
 }
 
 int Reserva::getNumReserva() const
@@ -66,12 +36,12 @@ std::string Reserva::getNombreEdificio() const
     return this->nombreEdificio;
 }
 
-const Fecha& Reserva::getFechaEntrada() const
+Fecha Reserva::getFechaEntrada() const
 {
     return this->fechaEntrada;
 }
 
-const Fecha& Reserva::getFechaSalida() const
+Fecha Reserva::getFechaSalida() const
 {
     return this->fechaSalida;
 }
@@ -91,7 +61,7 @@ int Reserva::getIdApartamento() const
     return this->referencia.getIdApartamento();
 }
 
-const TipoApartamento &Reserva::getTipo() const
+TipoApartamento Reserva::getTipo() const
 {
     return this->referencia.getTipo();
 }

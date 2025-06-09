@@ -17,7 +17,7 @@ bool Apartamento::disponible(Fecha entrada, Fecha salida) const
     return true;
 }
 
-const TipoApartamento& Apartamento::getTipo() const
+TipoApartamento Apartamento::getTipo() const
 {
     return this->referencia.getTipo();
 }

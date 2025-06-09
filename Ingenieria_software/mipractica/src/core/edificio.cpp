@@ -32,30 +32,6 @@ Edificio::Edificio(int idEdificio, char nombre[], int nBasicos, int nNormales, i
     }
 }
 
-void Edificio::setIdEdificio(int idEdificio)
-{
-    this->idEdificio = idEdificio;
-}
-
-void Edificio::setNombre(char nombre [20])
-{
-    this->nombre = nombre;
-}
-
-void Edificio::setNBasicos(int nBasicos)
-{
-    this->nBasicos = nBasicos;
-}
-
-void Edificio::setNNormales(int nNormales)
-{
-    this->setNNormales(nNormales);
-}
-
-void Edificio::setNLujo(int nLujo)
-{
-    this->nLujo = nLujo;
-}
 
 int Edificio::getIdEdificio() const
 {
@@ -65,21 +41,6 @@ int Edificio::getIdEdificio() const
 const std::string Edificio::getNombre() const
 {
     return this->nombre;
-}
-
-int Edificio::getNBasicos() const
-{
-    return this->nBasicos;
-}
-
-int Edificio::getNNormales() const
-{
-    return this->nNormales;
-}
-
-int Edificio::getNLujo() const
-{
-    return this->nLujo;
 }
 
 InfoEdificio Edificio::getInfoEdificio() const
@@ -117,7 +78,7 @@ std::optional<Reserva> Edificio::reservar(bool confirmacion, Reserva reserva)
     //se reserva el primer apartamento que se encuentre disponible
     for (Apartamento& apartamento: apartamentos){
         if (apartamento.getTipo() == reserva.getTipo() && apartamento.disponible(reserva.getFechaEntrada(), reserva.getFechaSalida())){
-            reserva.setidApartamento(apartamento.getIdApartamento());
+            reserva.setIdApartamento(apartamento.getIdApartamento());
             if (confirmacion) apartamento.addReserva(reserva);
             return reserva;
         }

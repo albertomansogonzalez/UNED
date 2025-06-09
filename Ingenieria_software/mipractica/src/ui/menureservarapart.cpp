@@ -33,28 +33,28 @@ void MenuReservarApart::mostrar()
     Fecha salida = entrada.calcularFechaFinal(duracion);
 
     //¿Hay Disponibilidad?
-    if (gesRAE.numApartaDisponible(idEdificio, tipo, entrada, salida) > 0){ //TODO: tal vez se pueda comprobar simplemente con el optional de reservar
-        Reserva reserva = *gesRAE.reservar(false, idEdificio, tipo, entrada, salida);
-        std::cout << std::endl << "\t\tDatos de la Reserva: " << std::endl << std::endl;
-        std::cout << "\tNumero de Reserva: " << reserva.getNumReserva() << "/" << reserva.getFechaEntrada().getAnio() << std::endl;
-        std::cout << "\tEdificio: " << reserva.getNombreEdificio() << "(ID = " << reserva.getIdEdificio() << ")" << std::endl;
-        std::cout << "\tReferencia Apartamento: " << reserva.getRefApartamento().getTexto() << std::endl;
-        std::cout << "\tFecha entrada: " << reserva.getFechaEntrada().toString() << std::endl;
-        std::cout << "\tDuracion estancia: " << reserva.getDuracion() << " dias" << std::endl;
-        std::cout << "\tFecha salida: " << reserva.getFechaSalida().toString() << std::endl;
-
-        std::cout << "Es correcto la operacion (S/N)? ";
-        std::cin >> confirmar;
-        if (confirmar == 'S' || confirmar == 's'){
-            gesRAE.reservar(true, idEdificio, tipo, entrada, salida);
-        }else if (confirmar == 'N'){
-            //No realizar la reserva
-        }
-
-    }else{
+    std::optional<Reserva> reseropt = gesRAE.reservar(false, idEdificio, tipo, entrada, salida);
+    if (!reseropt){
         std::cout << "No hay disponibilidad en esas fechas" << std::endl;
+        return;
     }
 
+    Reserva reserva = reseropt.value();
 
+    std::cout << std::endl << "\t\tDatos de la Reserva: " << std::endl << std::endl;
+    std::cout << "\tNumero de Reserva: " << reserva.getNumReserva() << "/" << reserva.getFechaEntrada().getAnio() << std::endl;
+    std::cout << "\tEdificio: " << reserva.getNombreEdificio() << "(ID = " << reserva.getIdEdificio() << ")" << std::endl;
+    std::cout << "\tReferencia Apartamento: " << reserva.getRefApartamento().getTexto() << std::endl;
+    std::cout << "\tFecha entrada: " << reserva.getFechaEntrada().toString() << std::endl;
+    std::cout << "\tDuracion estancia: " << reserva.getDuracion() << " dias" << std::endl;
+    std::cout << "\tFecha salida: " << reserva.getFechaSalida().toString() << std::endl;
+
+    std::cout << "Es correcto la operacion (S/N)? ";
+    std::cin >> confirmar;
+    if (confirmar == 'S' || confirmar == 's'){
+        gesRAE.reservar(true, idEdificio, tipo, entrada, salida);
+    }else if (confirmar == 'N'){
+        //No realizar la reserva
+    }
 
 }

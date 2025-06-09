@@ -11,7 +11,7 @@ class Apartamento
 public:
     Apartamento(TipoApartamento tipo, int idApartamento);
     bool disponible(Fecha entrada, Fecha salida) const;
-    const TipoApartamento &getTipo() const;
+    TipoApartamento getTipo() const;
     void addReserva(Reserva reserva);
     int getIdApartamento() const;
     const std::vector<Reserva> getReservas() const;

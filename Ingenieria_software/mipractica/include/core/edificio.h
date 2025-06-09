@@ -21,16 +21,8 @@ class Edificio
 public:
     Edificio();
     Edificio(int idEdificio, char nombre [20], int nBasicos, int nNormales, int nLujo);
-    void setIdEdificio(int idEdificio);
-    void setNombre(char nombre [20]);
-    void setNBasicos(int nBasicos);
-    void setNNormales(int nNormales);
-    void setNLujo(int nLujo);
     int getIdEdificio() const;
     const std::string getNombre() const;
-    int getNBasicos() const;
-    int getNNormales() const;
-    int getNLujo() const;
     InfoEdificio getInfoEdificio() const;
     const std::vector<Apartamento>& getApartamentos();
     /**

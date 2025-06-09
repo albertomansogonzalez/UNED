@@ -10,24 +10,16 @@ class Reserva
 public:
     Reserva();
     Reserva(int numReserva, int idEdificio,std::string nombreEdificio, TipoApartamento tipo,int idApartaDispo, Fecha fechaEntrada, Fecha fechaSalida);
-    void setNumReserva(int numReserva);
-    void setRefApartamento(std::string refApartamento);
-    void setFechaEntrada(const Fecha& fechaEntrada);
-    void setFechaSalida(const Fecha& fechaSalida);
-    void setDuracion(int duracion);
-    void setIdEdificio(int id);
-    void setidApartamento(int id);
-    void setNombreEdificio(const char *nombre);
-    void setTipoApartamento(TipoApartamento tipo);
+    void setIdApartamento(int id);
     int getNumReserva() const;
     ReferenciaApartamento getRefApartamento() const;
     std::string getNombreEdificio() const;
-    const Fecha& getFechaEntrada() const;
-    const Fecha& getFechaSalida() const;
+    Fecha getFechaEntrada() const;
+    Fecha getFechaSalida() const;
     int getDuracion() const;
     int getIdEdificio() const;
     int getIdApartamento() const;
-    const TipoApartamento& getTipo() const;
+    TipoApartamento getTipo() const;
 private:
     /**
      * @brief numReserva Dentro de cada anio

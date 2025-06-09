@@ -20,7 +20,6 @@ int GesRAE::numApartaDisponible(int idEdificio, TipoApartamento tipo, Fecha entr
 std::optional<Reserva> GesRAE::reservar(bool confirmacion, int idEdificio, TipoApartamento tipo, Fecha fechaEntrada, Fecha fechaSalida)
 {
     //el gestor crea una proto-reserva, con algunos datos
-    //TODO revisar cambiar esta Reserva por un DTO InfoReserva
     Reserva protoReserva(reservasPorAnio[fechaEntrada.getAnio()] + 1, idEdificio, edificios[idEdificio - 1].getNombre(), tipo, 0/*idApartamento lo rellena el edificio*/, fechaEntrada, fechaSalida);
 
     //TODO ¿que pasa si la fechaEntrada > fechaSalida??

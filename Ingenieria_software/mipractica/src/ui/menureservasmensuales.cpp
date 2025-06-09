@@ -9,9 +9,8 @@ MenuReservasMensuales::MenuReservasMensuales(GesRAE &gesRAE): gesRAE(gesRAE) {}
 
 void MenuReservasMensuales::mostrar()
 {
-    std::string refTexto; //TODO
-    int mes;
-    int anio;
+    std::string refTexto;
+    int mes, anio;
     std::cout << "Reservas Mensuales Apartamento" << std::endl;
     std::cout << "Referencia Apartamento? ";
     std::cin >> refTexto;
@@ -23,9 +22,9 @@ void MenuReservasMensuales::mostrar()
     std::cin >> anio;
 
     std::cout << "\t\tEstado mensual Apartamento:" << referencia.getTexto() << std::endl;
-    std::cout << "\t\t\tEdificio: " << gesRAE.getInfoEdificio(referencia.getIdEdificio()).nombre << "\n"; //TODO
+    std::cout << "\t\t\tEdificio: " << gesRAE.getInfoEdificio(referencia.getIdEdificio()).nombre << "\n";
 
-    //TODO Printear el calendarios
+    //Printear el calendario
     int primerDia = Fecha::diaDeLaSemana(1, mes, anio);
     // Ajustamos para que 0 sea domingo, 1 lunes, ..., 6 sábado
     int inicio = (primerDia + 6) % 7;
@@ -55,24 +54,17 @@ void MenuReservasMensuales::mostrar()
     std::cout << "\n";
 
 
-
-
     if (resumen.reservas.empty()) {
-        std::cout << "\nNo hay reservas.\n";
+        std::cout << "No hay reservas.\n";
     } else {
         //Mostrar todas las reservas:
         for (const Reserva& reserva: resumen.reservas){
-            //TODO solo mostrar las reservas de ese anio
             std::cout << "Reserva " << reserva.getNumReserva() << "/" << reserva.getFechaEntrada().getAnio() << ": Fecha entrada: " << reserva.getFechaEntrada().toString() <<  " y de " << reserva.getDuracion() << " dias\n";
         }
     }
 
-    std::cout << "Total dias reservados del mes:" << resumen.nReservados << " dias\n";
-    std::cout << "Total dias libres del mes:" << resumen.nLibres << " dias\n";
-
-
-
-
+    std::cout << "Total dias reservados del mes: " << resumen.nReservados << " dias\n";
+    std::cout << "Total dias libres del mes: " << resumen.nLibres << " dias\n";
 
 
 }
