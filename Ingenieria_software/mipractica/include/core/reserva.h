@@ -9,17 +9,29 @@ class Reserva
 {
 public:
     Reserva();
+
     Reserva(int numReserva, int idEdificio,std::string nombreEdificio, TipoApartamento tipo,int idApartartamento, Fecha fechaEntrada, Fecha fechaSalida);
-    void setIdApartamento(int id);
-    int getNumReserva() const;
-    ReferenciaApartamento getRefApartamento() const;
-    std::string getNombreEdificio() const;
-    Fecha getFechaEntrada() const;
-    Fecha getFechaSalida() const;
-    int getDuracion() const;
-    int getIdEdificio() const;
-    int getIdApartamento() const;
-    TipoApartamento getTipo() const;
+
+    void setIdApartamento(int id) {referencia.setIdApartamento(id);}
+
+    int getNumReserva() const {return numReserva;}
+
+    ReferenciaApartamento getRefApartamento() const {return referencia;}
+
+    std::string getNombreEdificio() const {return nombreEdificio;}
+
+    Fecha getFechaEntrada() const {return fechaEntrada;}
+
+    Fecha getFechaSalida() const {return fechaSalida;}
+
+    int getDuracion() const {return duracion;}
+
+    int getIdEdificio() const {return referencia.getIdEdificio();}
+
+    int getIdApartamento() const {return referencia.getIdApartamento();}
+
+    TipoApartamento getTipo() const {return referencia.getTipo();}
+
 private:
     /**
      * @brief numReserva Dentro de cada anio

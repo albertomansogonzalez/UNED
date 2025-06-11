@@ -7,7 +7,7 @@ void MenuApartaDispo::mostrar()
 {
     int idEdificio; //entre 1 y 5
     int diaEntrada, mesEntrada, anioEntrada;
-    int duracion;
+    std::size_t duracion;
 
     std::cout << std::endl << "Apartamentos Disponibles" << std::endl;
     do {

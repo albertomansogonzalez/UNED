@@ -11,7 +11,7 @@ void MenuReservarApart::mostrar()
     char letraTipo;
     TipoApartamento tipo;
     int diaEntrada, mesEntrada, anioEntrada;
-    int duracion;
+    std::size_t duracion;
     char confirmar;
 
     std::cout << std::endl << "Reservar Apartamento:" << std::endl << std::endl;

@@ -3,17 +3,17 @@
 #include <iostream>
 
 Edificio::Edificio() {
-    this->idEdificio = -1;
-    this->nombre =  "";
-    this->nBasicos = 0;
-    this->nNormales = 0;
-    this->nLujo = 0;
+    idEdificio = -1; //-1 indica que los datos del edifico no estan rellenos
+    nombre =  "";
+    nBasicos = 0;
+    nNormales = 0;
+    nLujo = 0;
 }
 
 /**
  * @param idEdificio Valor entre 1 y 5 que identifica el edificio.
  */
-Edificio::Edificio(int idEdificio, char nombre[], int nBasicos, int nNormales, int nLujo)
+Edificio::Edificio(int idEdificio, std::string nombre, std::size_t nBasicos, std::size_t nNormales, std::size_t nLujo)
 {
     this->idEdificio = idEdificio;
     this->nombre = nombre;
@@ -22,52 +22,22 @@ Edificio::Edificio(int idEdificio, char nombre[], int nBasicos, int nNormales, i
     this->nLujo = nLujo;
 
     for (int i = 0 ; i < nBasicos; i++){
-        this->apartamentos.push_back(Apartamento(TipoApartamento::Basico, i+1));
+        apartamentos.push_back(Apartamento(TipoApartamento::Basico, i+1));
     }
     for (int i = 0 ; i < nNormales; i++){
-        this->apartamentos.push_back(Apartamento(TipoApartamento::Normal, i+1));
+        apartamentos.push_back(Apartamento(TipoApartamento::Normal, i+1));
     }
     for (int i = 0 ; i < nLujo; i++){
-        this->apartamentos.push_back(Apartamento(TipoApartamento::Lujo, i+1));
+        apartamentos.push_back(Apartamento(TipoApartamento::Lujo, i+1));
     }
-}
-
-
-int Edificio::getIdEdificio() const
-{
-    return this->idEdificio;
-}
-
-const std::string Edificio::getNombre() const
-{
-    return this->nombre;
-}
-
-InfoEdificio Edificio::getInfoEdificio() const
-{
-    InfoEdificio infoEdificio;
-    infoEdificio.idEdificio = this->idEdificio;
-    infoEdificio.nombre = this->nombre;
-    infoEdificio.nBasicos = this->nBasicos;
-    infoEdificio.nNormales = this->nNormales;
-    infoEdificio.nLujo = this->nLujo;
-
-    return infoEdificio;
-
-}
-
-const std::vector<Apartamento> &Edificio::getApartamentos()
-{
-    return this->apartamentos;
 }
 
 int Edificio::numApartamentoDisponible(TipoApartamento tipo, Fecha entrada, Fecha salida)
 {
     int num = 0;
     for (const Apartamento& apartamento: apartamentos){
-        if (apartamento.getTipo() == tipo && apartamento.disponible(entrada, salida)){
+        if (apartamento.getTipo() == tipo && apartamento.estaDisponible(entrada, salida)){
             num++;
-            //return apartamento.getIdApartamento();
         }
     }
     return num;
@@ -77,7 +47,7 @@ std::optional<Reserva> Edificio::reservar(bool confirmacion, Reserva reserva)
 {
     //se reserva el primer apartamento que se encuentre disponible
     for (Apartamento& apartamento: apartamentos){
-        if (apartamento.getTipo() == reserva.getTipo() && apartamento.disponible(reserva.getFechaEntrada(), reserva.getFechaSalida())){
+        if (apartamento.getTipo() == reserva.getTipo() && apartamento.estaDisponible(reserva.getFechaEntrada(), reserva.getFechaSalida())){
             reserva.setIdApartamento(apartamento.getIdApartamento());
             if (confirmacion) apartamento.addReserva(reserva);
             return reserva;
@@ -98,7 +68,7 @@ std::vector<Reserva> Edificio::obtenerReservasMes(int idApartamento, TipoApartam
         }
     }
 
-    std::cerr << "unreachable code\n";
+    std::cerr << "unreachable code\n";  //TODO revisar
 
 }
 

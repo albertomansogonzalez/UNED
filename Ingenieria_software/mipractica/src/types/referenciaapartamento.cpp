@@ -31,33 +31,3 @@ std::string ReferenciaApartamento::getTexto() const
 
     return std::string(buffer);
 }
-
-const TipoApartamento& ReferenciaApartamento::getTipo() const
-{
-    return this->tipo;
-}
-
-int ReferenciaApartamento::getIdApartamento() const
-{
-    return this->idApartamento;
-}
-
-int ReferenciaApartamento::getIdEdificio() const
-{
-    return this->idEdificio;
-}
-
-void ReferenciaApartamento::setTipo(TipoApartamento tipo)
-{
-    this->tipo = tipo;
-}
-
-void ReferenciaApartamento::setIdApartamento(int id)
-{
-    this->idApartamento = id;
-}
-
-void ReferenciaApartamento::setIdEdificio(int id)
-{
-    this->idEdificio = id;
-}

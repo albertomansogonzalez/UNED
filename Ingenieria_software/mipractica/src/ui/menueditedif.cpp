@@ -11,7 +11,7 @@ void MenuEditEdif::mostrar()
 {
     int idEdificio;
     char nombre [20];
-    int nBasicos, nNormales, nLujo;
+    std::size_t nBasicos, nNormales, nLujo;
     char confirmar;
 
     std::cout << "  Editar Edificio" << std::endl;

@@ -10,19 +10,47 @@ class Apartamento
 {
 public:
     Apartamento(TipoApartamento tipo, int idApartamento);
-    bool disponible(Fecha entrada, Fecha salida) const;
-    TipoApartamento getTipo() const;
-    void addReserva(Reserva reserva);
-    int getIdApartamento() const;
-    const std::vector<Reserva> getReservas() const;
+
+    TipoApartamento getTipo() const {return referencia.getTipo();}
+
+    int getIdApartamento() const{return referencia.getIdApartamento();}
+
     /**
-     * @brief getReservasMes Devuelve lista con reservas del mes
-     * @param mes
-     * @return
+     * @brief getReservas Devuelve toda la lista de reservas del apartamento
+     * @return Lista de reservas del apartamento
      */
-    const std::vector<Reserva> getReservasMes(int mes, int anio) const;
+    const std::vector<Reserva> &getReservas() const{return reservas;}
+
+    /**
+     * @brief getReservasMes Devuelve lista con las reservas que tiene el apartamento ese mes
+     * @param mes
+     * @return Lista de reservas del apartamento en ese mes/anio
+     */
+    std::vector<Reserva> getReservasMes(int mes, int anio) const;
+
+    /**
+     * @brief estaDisponible Consultar disponibilidad entre 2 fechas
+     * @param entrada
+     * @param salida
+     * @return True si esta disponible
+     */
+    bool estaDisponible(Fecha entrada, Fecha salida) const;
+
+    /**
+     * @brief addReserva Aniade una reserva al apartamento
+     * @param reserva
+     */
+    void addReserva(Reserva reserva);
+
 private:
+    /**
+     * @brief referencia Identificador de cada apartamento
+     */
     ReferenciaApartamento referencia;
+
+    /**
+     * @brief reservas Lista de todas las reservas del apartamento
+     */
     std::vector<Reserva> reservas;
 };
 

@@ -45,17 +45,17 @@ bool Fecha::operator<=(const Fecha &other) const
 
 int Fecha::getDia() const
 {
-    return this->dia;
+    return dia;
 }
 
 int Fecha::getMes() const
 {
-    return this->mes;
+    return mes;
 }
 
 int Fecha::getAnio() const
 {
-    return this->anio;
+    return anio;
 }
 
 const std::string Fecha::toString() const
@@ -109,6 +109,11 @@ int Fecha::calcularDuracion(Fecha fechaSalida) const
     std::chrono::days diferencia = dias2 - dias1;
 
     return diferencia.count() + 1; //+1 para incluir tanto dia de entrada como el de salida
+}
+
+bool Fecha::seSolapanRangoFechas(Fecha inicioA, Fecha finA, Fecha inicioB, Fecha finB)
+{
+    return ((inicioA <= finB) && (finA >= inicioB));
 }
 
 bool Fecha::esBisiesto(int anio)

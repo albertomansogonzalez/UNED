@@ -11,20 +11,32 @@
 struct InfoEdificio{
     int idEdificio;
     std::string nombre;
-    int nBasicos;
-    int nNormales;
-    int nLujo;
+    std::size_t nBasicos;
+    std::size_t nNormales;
+    std::size_t nLujo;
 };
 
 class Edificio
 {
 public:
     Edificio();
-    Edificio(int idEdificio, char nombre [20], int nBasicos, int nNormales, int nLujo);
-    int getIdEdificio() const;
-    const std::string getNombre() const;
-    InfoEdificio getInfoEdificio() const;
-    const std::vector<Apartamento>& getApartamentos();
+
+    /**
+     * @brief Edificio
+     * @param idEdificio ID entre 1 y 5
+     * @param nombre
+     * @param nBasicos Nº de apartaments basicos
+     * @param nNormales Nº de apartaments normales
+     * @param nLujo Nº de apartaments de lujo
+     */
+    Edificio(int idEdificio, std::string nombre, std::size_t nBasicos, std::size_t nNormales, std::size_t nLujo);
+
+    int getIdEdificio() const{return idEdificio;}
+
+    const std::string getNombre() const{return nombre;}
+
+    InfoEdificio getInfoEdificio() const{ return {idEdificio, nombre, nBasicos, nNormales, nLujo};}
+
     /**
      * @brief numApartamentoDisponible
      * @param tipo
@@ -38,9 +50,9 @@ public:
 private:
     int idEdificio;
     std::string nombre;
-    int nBasicos;
-    int nNormales;
-    int nLujo;
+    std::size_t nBasicos;
+    std::size_t nNormales;
+    std::size_t nLujo;
     std::vector<Apartamento> apartamentos;
 };
 

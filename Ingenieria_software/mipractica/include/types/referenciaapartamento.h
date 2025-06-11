@@ -8,21 +8,41 @@ class ReferenciaApartamento
 {
 public:
     ReferenciaApartamento();
+
     ReferenciaApartamento(TipoApartamento tipo, int idEdificio, int idApartamento);
+
+    TipoApartamento getTipo() const {return tipo;}
+
+    int getIdApartamento() const {return idApartamento;}
+
+    int getIdEdificio() const {return idEdificio;}
+
+    void setTipo(TipoApartamento tipo) {this->tipo = tipo;}
+
+    void setIdApartamento(int id){idApartamento = id;}
+
+    void setIdEdificio(int id) {idEdificio = id;}
+
+    /**
+     * @brief parsear A partir de la string de referencia "APT02B03" guarda los datos
+     * @param texto
+     */
     void parsear(std::string texto);
+
+    /**
+     * @brief getTexto Devuelve la string de referencia, ej "APT02B03"
+     * @return
+     */
     std::string getTexto() const;
-    const TipoApartamento &getTipo() const;
-    int getIdApartamento() const;
-    int getIdEdificio() const;
-    void setTipo(TipoApartamento tipo);
-    void setIdApartamento(int id);
-    void setIdEdificio(int id);
+
 private:
     TipoApartamento tipo;
+
     /**
      * @brief idApartamento Cada tipo de apartamento tiene su conjunto de Ids
      */
     int idApartamento;
+
     int idEdificio;
 };
 

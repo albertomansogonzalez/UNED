@@ -22,6 +22,21 @@ public:
     void setAnio(int anio);
     Fecha calcularFechaFinal(int duracion) const;
     int calcularDuracion(Fecha fechaSalida) const;
+
+    /**
+     * @brief seSolapanRangoFechas Dado 2 rangos de fechas, dice si se solapan
+     *
+     * Dado el rango A: (inicioA, finA) y el rango B: (inicioB, finB),
+     * se solapan si (inicioA <= finB) && (finA => inicioB).
+     *
+     * @param inicioA Fecha de inicio del rango A
+     * @param finA Fecha de fin del rango A
+     * @param inicioB Fecha de inicio del rango B
+     * @param finB Fecha de fin del rango B
+     * @return
+     */
+    static bool seSolapanRangoFechas(Fecha inicioA, Fecha finA, Fecha inicioB, Fecha finB);
+
     static bool esBisiesto(int anio);
     static int diasDelMes(int mes, int anio);
     /**

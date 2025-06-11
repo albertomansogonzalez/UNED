@@ -4,7 +4,7 @@ GesRAE::GesRAE() {}
 
 void GesRAE::aniadirEdificio(Edificio edificio)
 {
-    this->edificios[edificio.getIdEdificio() - 1] = edificio;
+    edificios[edificio.getIdEdificio() - 1] = edificio;
 }
 
 InfoEdificio GesRAE::getInfoEdificio(int id) const
@@ -35,7 +35,7 @@ std::optional<Reserva> GesRAE::reservar(bool confirmacion, int idEdificio, TipoA
 
 int GesRAE::numReservaAnio(int anio)
 {
-    return this->reservasPorAnio[anio];
+    return reservasPorAnio[anio];
 }
 
 ResumenMensual GesRAE::obtenerResumenMensual(ReferenciaApartamento referencia, int mes, int anio)
