@@ -6,6 +6,7 @@ procedure Main is
    peso : Integer;                 -- variable sin inicializar
    edad : Integer := 25;           -- variable inicializada
    id : constant Integer := 1234;  -- constante
+   a, b : Integer := 0;                 -- declaracion multiple
    altura : Float := 1.75;
    nombre : String := "Ana";
    activo : Boolean := True;
