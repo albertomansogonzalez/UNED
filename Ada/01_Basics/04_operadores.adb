@@ -12,7 +12,7 @@ begin
    Resultado := A ** B; -- potencia (elevado a)
 
    -- OPERADORES RELACIONALES
-   Res := X = Y; -- comapara si X es igual a Y
+   Res := X = Y; -- compara si X es igual a Y
    Res := X /= Y; -- distinto de
    Res := X < Y;
    Res := X <= Y;
