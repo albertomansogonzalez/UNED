@@ -20,6 +20,11 @@ begin
       Put_Line("El color es Azul");
    end if;
 
+   --  Existe un bucle for para recorrer un tipo enumerado:
+   for Mi_Color in Color loop
+      null;
+   end loop;
+
 
    -- No hay conversion implicita de Enumerado a Integer
 

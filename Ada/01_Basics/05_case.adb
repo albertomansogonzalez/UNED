@@ -7,10 +7,8 @@ begin
       when 1 =>
          Put_Line("Lunes");
          -- el "break" es implicito
-      when 2 =>
-         Put_Line("Martes");
-      when 3 =>
-         Put_Line("Miercoles");
+      when 2 .. 3 => -- se puede usar un rango
+         Put_Line("Martes o Miercoles");
       when 4 | 5 =>  -- Operador "|" para multiples opciones
          Put_Line("Jueves o Viernes");
       when others => -- OBLIGATORIO si no se cubren todos los casos
