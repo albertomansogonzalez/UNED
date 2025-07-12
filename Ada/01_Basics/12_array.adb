@@ -15,7 +15,7 @@ begin
    Valores := (1 => 10, 2 => 20, 3 => 30, 4 => 40, 5 => 50); -- aggregate por valor
    Valores(1) := 10; -- "()" : acceso a un elemento del arreglo
 
-
+   -- array Slice: se puede hacer a una subparte del array, por ejemplo solo al el indice 2,3 y 4.
+   Valores (2 .. 4) := (3, 4, 5);
 
 end Main;
-
