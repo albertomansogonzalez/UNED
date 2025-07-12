@@ -8,6 +8,7 @@ procedure Main is
    id : constant Integer := 1234;  -- constante
    a, b : Integer := 0;                 -- declaracion multiple
    altura : Float := 1.75;
+   distancia : Natural;            -- solo positivos
    nombre : String := "Ana";
    activo : Boolean := True;
    inicial : Character := 'A';
