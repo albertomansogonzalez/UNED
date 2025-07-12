@@ -9,8 +9,10 @@ procedure Main is
    type Day is new Dia; -- nuevo tipo enumerado
 
    -- "subtype": Subtipo, mismo tipo, pero con restriccion del tipo base, 100% compatible
-   subtype Edad_Adulta is Edad range 18 .. 100; -- limitado al rango (18,100)
    subtype ContadorNew is Integer; -- es como si fuera un simple alias
+   subtype Rango_Limitado is Integer range -10 .. 10; -- tipo Integer pero limitado en rango
+   subtype Temperatura_Ambiente is Float range -50.0 .. 100.0; -- tipo Float pero limitado en rango
+   subtype Edad_Adulta is Edad range 18 .. 100; -- tipo Edad pero limitado al rango (18,100)
    subtype Dias_Laborales is Dia range Lunes .. Viernes; -- subtipo de enumerado
 
    C1 : Contador;

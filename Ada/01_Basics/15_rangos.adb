@@ -2,7 +2,10 @@
 
 -- Tipos derivados: "type Edad is range 0 .. 130;"
 -- Subtipos: "subtype Adulto is Edad range 18 .. 130;"
+-- Subtipo valores negativos: "subtype Rango_Limitado is Integer range -10 .. 10;"
+-- Subtipo valores decimales: "subtype Temperatura_Ambiente is Float range -50.0 .. 100.0;"
 -- Subtipo de enumerado: "subtype Dias_Laborales is Dia range Lunes .. Viernes;"
+-- Subtipo rango de caracteres: "subtype Letras_Minusculas is Character range 'a' .. 'z';"
 -- Arrays: "type Mi_Array is array (1 .. 5) of Integer;"
 -- Array Slice: "Valores (2 .. 4) := (3, 4, 5);"
 -- bucle for: "for i in 1 .. 10 loop"
